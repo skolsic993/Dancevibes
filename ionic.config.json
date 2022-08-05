@@ -1,0 +1,7 @@
+{
+  "name": "DanceVibes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
