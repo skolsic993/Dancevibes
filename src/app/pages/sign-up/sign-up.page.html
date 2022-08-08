@@ -1,0 +1,38 @@
+<app-go-back-button></app-go-back-button>
+
+<div class="intro-header ion-justify-content-start ion-align-items-center">
+  <app-header
+    [title]="'Hello There!'"
+    [subtitle]="'Choose your most favorite music and enjoy it every day!'"
+  ></app-header>
+
+  <ion-card>
+    <ion-card-content>
+      <form (ngSubmit)="signUp()" [formGroup]="credentials">
+        <div class="input-group">
+          <app-input
+            [label]="'Email'"
+            [type]="'text'"
+            [control]="$any(credentials).controls['email']"
+          ></app-input>
+          <app-input
+            [label]="'Password'"
+            [type]="'password'"
+            [control]="$any(credentials).controls['password']"
+          ></app-input>
+        </div>
+
+        <div class="center height">
+          <button
+            ion-button
+            type="submit"
+            class="primary"
+            [disabled]="!credentials.valid"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</div>

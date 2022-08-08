@@ -1,26 +1,82 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-/* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
-/* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap");
+
+//#ff4961 crvena
+//#28ffb9
+ion-card {
+  width: 80%;
+  --background: rgba(0, 0, 0, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+ion-input {
+  --background: transparent;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+ion-content {
+  --background: #121921;
+}
+
+ion-fab-button {
+  --background: transparent;
+  border-radius: 50%;
+  box-shadow: 1.5px 1.5px 6px #000, -1.5px -1.5px 6px #444955;
+}
+
+.intro-header {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("./assets/images/background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-size: cover;
+}
+
+.primary {
+  padding: 1em 1.5em;
+  width: 120px;
+  display: flex;
+  border-radius: 0;
+  background: #10161c;
+  justify-content: space-evenly;
+  transition: all 0.4s ease;
+  align-items: center;
+  letter-spacing: 1px;
+  background: #121921;
+  box-shadow: 1.5px 1.5px 6px #000, -1.5px -1.5px 6px #444955;
+
+  &:focus {
+    box-shadow: inset 1.5px 1.5px 6px #000, inset -1.5px -1.5px 6px #444955;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

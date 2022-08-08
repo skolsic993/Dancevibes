@@ -1,0 +1,23 @@
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <div class="back center">
+        <ion-icon
+          size="large"
+          slot="icon-only"
+          name="reorder-three-outline"
+        ></ion-icon>
+      </div>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+{{user | async | json}}

@@ -1,0 +1,29 @@
+<div class="intro-header ion-justify-content-center ion-align-items-center">
+  <h1 class="ml4">
+    <span class="letters letters-1">Welcome</span>
+    <span class="letters letters-2">To</span>
+    <span class="letters letters-3">Dance</span>
+    <span class="letters letters-4">Vibes</span>
+  </h1>
+
+  <div class="buttons">
+    <button
+      ion-button
+      [replaceUrl]="true"
+      class="ion-activatable ripple-parent primary ion-text-capitalize ml-3 margin-right"
+      [routerLink]="['/login']"
+    >
+      <ion-icon size="small" slot="icon-only" name="log-in-outline"></ion-icon>
+      <span class="margin-top">Sign In</span>
+    </button>
+    <button
+      ion-button
+      [replaceUrl]="true"
+      class="ion-activatable ripple-parent primary ion-text-capitalize"
+      [routerLink]="['/signup']"
+    >
+      <ion-icon size="small" slot="icon-only" name="add-outline"></ion-icon>
+      <span>Sign Up</span>
+    </button>
+  </div>
+</div>
