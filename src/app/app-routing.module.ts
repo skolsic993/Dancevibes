@@ -24,11 +24,6 @@ const routes: Routes = [
       import('./pages/home/home.module').then((m) => m.HomePageModule),
     canLoad: [AuthGuard],
   },
-  {
-    path: 'signup',
-    loadChildren: () =>
-      import('./pages/sign-up/sign-up.module').then((m) => m.SignUpPageModule),
-  },
 ];
 
 @NgModule({

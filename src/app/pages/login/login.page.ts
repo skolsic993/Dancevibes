@@ -1,8 +1,8 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -16,33 +16,19 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private loadingController: LoadingController,
-    private supabaseService: SupabaseService
+    private authService: AuthService
   ) {}
 
-  ngOnInit() {
-    this.credentials = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(40),
-        Validators.email,
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(20),
-      ]),
-    });
-  }
+  ngOnInit() {}
 
   async login(): Promise<void> {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this.supabaseService.signIn(this.credentials.value).then(
+    this.authService.signin().then(
       async (data) => {
         await loading.dismiss();
-        this.router.navigateByUrl('/home', { replaceUrl: true });
+        this.router.navigateByUrl('/home');
       },
       async (err) => {
         await loading.dismiss();

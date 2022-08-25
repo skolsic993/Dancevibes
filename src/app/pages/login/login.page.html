@@ -5,34 +5,4 @@
     [title]="'Hello Again!'"
     [subtitle]="'Your music is waiting for you where you left off last time!'"
   ></app-header>
-
-  <ion-card>
-    <ion-card-content>
-      <form (ngSubmit)="login()" [formGroup]="credentials">
-        <div class="input-group">
-          <app-input
-            [label]="'Email'"
-            [type]="'text'"
-            [control]="$any(credentials).controls['email']"
-          ></app-input>
-          <app-input
-            [label]="'Password'"
-            [type]="'password'"
-            [control]="$any(credentials).controls['password']"
-          ></app-input>
-        </div>
-
-        <div class="center height">
-          <button
-            ion-button
-            type="submit"
-            class="primary"
-            [disabled]="!credentials.valid"
-          >
-            Log in
-          </button>
-        </div>
-      </form>
-    </ion-card-content>
-  </ion-card>
 </div>

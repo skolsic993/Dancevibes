@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
 import anime from 'animejs/lib/anime.es';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-intro',
@@ -7,7 +10,12 @@ import anime from 'animejs/lib/anime.es';
   styleUrls: ['./intro.page.scss'],
 })
 export class IntroPage implements OnInit {
-  constructor() {}
+  constructor(
+    private alertController: AlertController,
+    private router: Router,
+    private loadingController: LoadingController,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     let ml4 = {} as any;
@@ -81,5 +89,30 @@ export class IntroPage implements OnInit {
         duration: 500,
         delay: 500,
       });
+  }
+
+  async login(): Promise<void> {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    this.authService.signin().then(
+      async (data) => {
+        await loading.dismiss();
+        this.router.navigateByUrl('/home', { replaceUrl: true });
+      },
+      async (err) => {
+        await loading.dismiss();
+        this.showError('Login failed!', err.message);
+      }
+    );
+  }
+
+  async showError(title: string, msg: string): Promise<void> {
+    const alert = await this.alertController.create({
+      header: title,
+      message: msg,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 }

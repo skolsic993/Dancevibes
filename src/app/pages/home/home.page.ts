@@ -1,8 +1,8 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { SpotifyService } from './../../services/spotify.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
   selector: 'app-home',
@@ -13,21 +13,21 @@ export class HomePage implements OnInit {
   user: any;
   constructor(
     private router: Router,
-    private supabaseService: SupabaseService,
+    private authService: AuthService,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private spotifyService: SpotifyService
   ) {}
 
   ngOnInit() {
-    this.user = this.supabaseService.getUser();
+    this.user = this.authService.getUser();
   }
 
   async logout(): Promise<void> {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this.supabaseService.signOut().then(
+    this.authService.signOut().then(
       async () => {
         await loading.dismiss();
         this.router.navigateByUrl('/intro', { replaceUrl: true });

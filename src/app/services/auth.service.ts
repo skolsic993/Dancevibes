@@ -1,7 +1,7 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import {
   AuthChangeEvent,
   createClient,
@@ -9,24 +9,22 @@ import {
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { environment } from '../../environments/environment';
-import { Credentials } from '../Models/Credentials';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-export interface Profile {
-  username: string;
-  website: string;
-  avatar_url: string;
-}
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SupabaseService {
+export class AuthService {
   private supabase: SupabaseClient;
+  public signedIn$ = new BehaviorSubject<null | boolean>(null);
   public _currentUser: BehaviorSubject<User | boolean> = new BehaviorSubject(
     null
   );
+
+  get currentUser(): Observable<User | boolean> {
+    return this._currentUser.asObservable();
+  }
 
   constructor(
     private router: Router,
@@ -49,37 +47,21 @@ export class SupabaseService {
     this.supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent, session: Session) => {
         event == 'SIGNED_IN'
-          ? this._currentUser.next(session.user)
-          : this._currentUser.next(false);
+          ? this.signedIn$.next(true)
+          : this.signedIn$.next(false);
       }
     );
   }
 
-  async loadUser(): Promise<void> {
-    const user = await this.supabase.auth.user();
-
-    user ? this._currentUser.next(user) : this._currentUser.next(false);
-  }
-
-  get currentUser(): Observable<User | boolean> {
-    return this._currentUser.asObservable();
-  }
-
-  async signUp(credentials: Credentials) {
-    return new Promise(async (resolve, reject) => {
-      const { user, error } = await this.supabase.auth.signUp(credentials);
-
-      error ? reject(error) : resolve(user);
-    });
-  }
-
-  async signIn(credentials: { email; password }): Promise<void | User> {
+  signin(): Promise<User> {
+    this.signedIn$.next(true);
     return new Promise(async (resolve, reject) => {
       const { user, session, error } = await this.supabase.auth.signIn(
         {
           provider: 'spotify',
         },
         {
+          scopes: environment.scopes,
           redirectTo: 'http://localhost:8100/home?refresh=true',
         }
       );
@@ -101,13 +83,14 @@ export class SupabaseService {
   getUser() {
     const user = this.supabase.auth.user();
 
+    const access_token = JSON.parse(localStorage.getItem('supabase.auth.token'))
+      ?.currentSession?.provider_token;
     const headers = new HttpHeaders({
-      Authorization:
-        'Bearer BQCpQEL5XDEjlqJwk_gg3Q4fvT1P-c_wfEmRyu3og3W2LZLpMilTalUMi-waGcpZ_BEGU7kOV60wS6i-o5_vJcpktARNbihHbufu7XxPGDex3BgpCvJ2Lz52rT2-O6tflcX3ANS2ff177JwzaG7jPU09rBG_46Q63y6JjpQb4DrUqg_uKSwVSgqqLWoVaTt1EKONya4',
+      Authorization: `Bearer ${access_token}`,
     });
 
     return this.http.get<any>(
-      'https://api.spotify.com/v1/users/0pl3kd4bifk0qhy1acm48pd8n/playlist',
+      `https://api.spotify.com/v1/users/${user?.user_metadata?.sub}/playlists`,
       {
         headers,
       }
@@ -121,5 +104,11 @@ export class SupabaseService {
 
   createLoader(): Promise<HTMLIonLoadingElement> {
     return this.loadingCtrl.create();
+  }
+
+  async loadUser(): Promise<void> {
+    const user = this.supabase.auth.user();
+
+    user ? this._currentUser.next(user) : this._currentUser.next(false);
   }
 }

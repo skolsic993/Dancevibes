@@ -7,23 +7,8 @@
   </h1>
 
   <div class="buttons">
-    <button
-      ion-button
-      [replaceUrl]="true"
-      class="ion-activatable ripple-parent primary ion-text-capitalize ml-3 margin-right"
-      [routerLink]="['/login']"
-    >
-      <ion-icon size="small" slot="icon-only" name="log-in-outline"></ion-icon>
-      <span class="margin-top">Sign In</span>
-    </button>
-    <button
-      ion-button
-      [replaceUrl]="true"
-      class="ion-activatable ripple-parent primary ion-text-capitalize"
-      [routerLink]="['/signup']"
-    >
-      <ion-icon size="small" slot="icon-only" name="add-outline"></ion-icon>
-      <span>Sign Up</span>
-    </button>
+    <div class="center height">
+      <button (click)="login()" ion-button class="primary">Log in</button>
+    </div>
   </div>
 </div>
