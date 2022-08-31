@@ -1,8 +1,19 @@
-<app-go-back-button></app-go-back-button>
+<div class="intro-header ion-justify-content-center ion-align-items-center">
+  <h1 class="ml4">
+    <span class="letters letters-1">Welcome</span>
+    <span class="letters letters-2">To</span>
+    <span class="letters letters-3">Dance</span>
+    <span class="letters letters-4">Vibes</span>
+  </h1>
 
-<div class="intro-header ion-justify-content-start ion-align-items-center">
-  <app-header
-    [title]="'Hello Again!'"
-    [subtitle]="'Your music is waiting for you where you left off last time!'"
-  ></app-header>
+  <div class="buttons">
+    <div *ngIf="!isAuthenticated()" class="center height">
+      <button (click)="login()" ion-button class="primary">Log in</button>
+    </div>
+    <div *ngIf="isAuthenticated()" class="center height">
+      <button ion-button class="primary" [routerLink]="['/home']">
+        Let's go!
+      </button>
+    </div>
+  </div>
 </div>

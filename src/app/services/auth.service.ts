@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
   AuthChangeEvent,
@@ -17,21 +17,16 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class AuthService {
   private supabase: SupabaseClient;
-  public signedIn$ = new BehaviorSubject<null | boolean>(null);
+  public isLoggedin: boolean;
+
   public _currentUser: BehaviorSubject<User | boolean> = new BehaviorSubject(
     null
   );
 
-  get currentUser(): Observable<User | boolean> {
-    return this._currentUser.asObservable();
-  }
-
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController,
-    private http: HttpClient,
-    private route: ActivatedRoute
+    private toastCtrl: ToastController
   ) {
     this.supabase = createClient(
       environment.supabaseUrl,
@@ -47,14 +42,23 @@ export class AuthService {
     this.supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent, session: Session) => {
         event == 'SIGNED_IN'
-          ? this.signedIn$.next(true)
-          : this.signedIn$.next(false);
+          ? this._currentUser.next(session.user)
+          : this._currentUser.next(false);
       }
     );
   }
 
-  signin(): Promise<User> {
-    this.signedIn$.next(true);
+  async loadUser(): Promise<void> {
+    const user = this.supabase.auth.user();
+
+    user ? this._currentUser.next(user) : this._currentUser.next(false);
+  }
+
+  get currentUser(): Observable<User | boolean> {
+    return this._currentUser.asObservable();
+  }
+
+  async signIn(): Promise<User> {
     return new Promise(async (resolve, reject) => {
       const { user, session, error } = await this.supabase.auth.signIn(
         {
@@ -80,21 +84,18 @@ export class AuthService {
     this.router.navigateByUrl('/');
   }
 
-  getUser() {
-    const user = this.supabase.auth.user();
+  public getUser(): User {
+    return this.supabase.auth.user();
+  }
 
-    const access_token = JSON.parse(localStorage.getItem('supabase.auth.token'))
-      ?.currentSession?.provider_token;
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${access_token}`,
-    });
+  public getSession(): Session | null {
+    return this.supabase.auth.session();
+  }
 
-    return this.http.get<any>(
-      `https://api.spotify.com/v1/users/${user?.user_metadata?.sub}/playlists`,
-      {
-        headers,
-      }
-    );
+  public authChanges(
+    callback: (event: AuthChangeEvent, session: Session | null) => void
+  ): any {
+    return this.supabase.auth.onAuthStateChange(callback);
   }
 
   async createNotice(message: string): Promise<void> {
@@ -104,11 +105,5 @@ export class AuthService {
 
   createLoader(): Promise<HTMLIonLoadingElement> {
     return this.loadingCtrl.create();
-  }
-
-  async loadUser(): Promise<void> {
-    const user = this.supabase.auth.user();
-
-    user ? this._currentUser.next(user) : this._currentUser.next(false);
   }
 }
