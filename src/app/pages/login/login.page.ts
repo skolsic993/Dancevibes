@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { User } from '@supabase/supabase-js';
 import anime from 'animejs/lib/anime.es';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-login',

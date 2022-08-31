@@ -1,7 +1,6 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { LoadingController, ToastController } from '@ionic/angular';
 import {
   AuthChangeEvent,
   createClient,
@@ -9,8 +8,8 @@ import {
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -81,7 +80,7 @@ export class AuthService {
       this.supabase.removeSubscription(sup);
     });
 
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/home');
   }
 
   public getUser(): User {

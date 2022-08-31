@@ -1,7 +1,7 @@
-import { pluck } from 'rxjs/operators';
-import { Playlist } from './../../../../Models/playlist.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
+import { Playlist } from '../../../../Models/playlist.model';
 
 @Component({
   selector: 'app-playlist',

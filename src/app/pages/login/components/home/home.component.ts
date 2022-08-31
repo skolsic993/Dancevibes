@@ -1,18 +1,17 @@
-import { User } from '@supabase/supabase-js';
-import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { SpotifyService } from 'src/app/services/spotify.service';
-import { Playlist } from 'src/app/Models/playlist.model';
 import { Observable } from 'rxjs';
+import { Playlist } from 'src/app/Models/playlist.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
-export class HomePage implements OnInit {
+export class HomeComponent implements OnInit {
   public playlists: Observable<{ items: Playlist[] }>;
 
   constructor(
