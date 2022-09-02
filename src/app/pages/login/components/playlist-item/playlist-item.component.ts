@@ -1,5 +1,5 @@
-import { Playlist } from 'src/app/Models/playlist.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { Playlist } from 'src/app/Models/playlist.model';
 
 @Component({
   selector: 'app-playlist-item',
@@ -13,7 +13,7 @@ export class PlaylistItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSlideChange() {
-    console.log('slide change');
+  public getFirstImage(): string {
+    return this.playlistItem.images[0]?.url;
   }
 }

@@ -14,6 +14,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&family=Work+Sans:wght@200&display=swap");
+
+//Headers font
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&family=Roboto:wght@100&family=Varela+Round&family=Work+Sans:wght@200&display=swap");
+// General font
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Varela+Round&display=swap");
 
 @import "~swiper/scss";
 @import "~@ionic/angular/css/ionic-swiper";
@@ -30,20 +36,20 @@ ion-card {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-ion-input {
-  --background: transparent;
-}
-
 ion-item {
-  --background: transparent;
+  background: transparent;
 }
 
 ion-content {
-  --background: #121921;
+  --background: #121429;
+}
+
+ion-header {
+  background: #121429;
 }
 
 ion-fab-button {
-  --background: transparent;
+  background: transparent;
   border-radius: 50%;
   box-shadow: 1.5px 1.5px 6px #000, -1.5px -1.5px 6px #444955;
 }

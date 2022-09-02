@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  padding-left: 20px;
+  margin-bottom: 20px;
+
+  h1 {
+    position: relative;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-family: "Varela Round", sans-serif;
+    text-transform: capitalize;
+  }
+}
+
+swiper {
+  display: flex;
+  height: 38vh;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.swiper-slide {
+  margin-right: 0;
+}

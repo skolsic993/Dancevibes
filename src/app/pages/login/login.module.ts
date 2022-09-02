@@ -11,6 +11,8 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { SwiperModule } from 'swiper/angular';
 
+import { OtherPlaylistSwiperComponent } from './components/other-playlist-swiper/other-playlist-swiper.component';
+import { OtherPlaylistsComponent } from './components/other-playlists/other-playlists.component';
 import { LoginPage } from './login.page';
 
 @NgModule({
@@ -26,6 +28,8 @@ import { LoginPage } from './login.page';
     HomeComponent,
     PlaylistComponent,
     PlaylistItemComponent,
+    OtherPlaylistsComponent,
+    OtherPlaylistSwiperComponent,
   ],
 })
 export class LoginPageModule {}

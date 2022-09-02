@@ -1,0 +1,18 @@
+<ion-segment
+  swipe-gesture
+  (ionChange)="segmentChanged($event)"
+  value="home"
+  [ngStyle]="{ 'margin-top': '20px' }"
+>
+  <ion-segment-button value="home">
+    <span class="segment-text">Features</span>
+  </ion-segment-button>
+  <ion-segment-button value="heart">
+    <span class="segment-text">New Releases</span>
+  </ion-segment-button>
+  <ion-segment-button value="pin">
+    <span class="segment-text">Categories</span>
+  </ion-segment-button>
+</ion-segment>
+
+<app-other-playlist-swiper></app-other-playlist-swiper>

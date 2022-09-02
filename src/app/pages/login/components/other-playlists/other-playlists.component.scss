@@ -1,0 +1,22 @@
+ion-segment {
+  padding: 5px 15px;
+}
+
+.segment-text {
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+ion-segment-button {
+  --color: white;
+  --color-checked: #69ff00;
+  --background: transparent;
+  --indicator-height: 0px;
+  margin: 0 5px;
+  min-height: 35px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-family: "Libre Franklin", sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 1.5px 1.5px 4px #000, -1.5px -1.5px 4px #11275c;
+}

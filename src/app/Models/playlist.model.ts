@@ -6,7 +6,7 @@ export interface Playlist {
   external_urls: { spotify: string };
   href: string;
   id: string;
-  images: [];
+  images: { url: string };
   name: string;
   owner: Owner;
   primary_color: null;
