@@ -13,7 +13,7 @@ import { IntroPageRoutingModule } from './intro-routing.module';
 import { SwiperModule } from 'swiper/angular';
 
 import { OtherPlaylistSwiperComponent } from './components/other-playlist-swiper/other-playlist-swiper.component';
-import { OtherPlaylistsComponent } from './components/other-playlists/other-playlists.component';
+import { OtherPlaylistComponent } from './components/other-playlist/other-playlist.component';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { OtherPlaylistsComponent } from './components/other-playlists/other-play
     HomeComponent,
     MyPlaylistComponent,
     PlaylistItemComponent,
-    OtherPlaylistsComponent,
+    OtherPlaylistComponent,
     OtherPlaylistSwiperComponent,
   ],
 })

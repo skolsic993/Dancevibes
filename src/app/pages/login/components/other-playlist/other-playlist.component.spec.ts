@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OtherPlaylistsComponent } from './other-playlists.component';
+import { OtherPlaylistComponent } from './other-playlist.component';
 
-describe('OtherPlaylistsComponent', () => {
-  let component: OtherPlaylistsComponent;
-  let fixture: ComponentFixture<OtherPlaylistsComponent>;
+describe('OtherPlaylistComponent', () => {
+  let component: OtherPlaylistComponent;
+  let fixture: ComponentFixture<OtherPlaylistComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ OtherPlaylistsComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [OtherPlaylistComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OtherPlaylistsComponent);
+    fixture = TestBed.createComponent(OtherPlaylistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

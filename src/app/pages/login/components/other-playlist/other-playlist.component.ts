@@ -4,10 +4,10 @@ import { Playlist } from 'src/app/Models/playlist.model';
 
 @Component({
   selector: 'app-other-playlists',
-  templateUrl: './other-playlists.component.html',
-  styleUrls: ['./other-playlists.component.scss'],
+  templateUrl: './other-playlist.component.html',
+  styleUrls: ['./other-playlist.component.scss'],
 })
-export class OtherPlaylistsComponent implements OnInit {
+export class OtherPlaylistComponent implements OnInit {
   public playlists: Observable<Playlist[]>;
   @Input() otherRawPlaylists: Observable<{ items: Playlist[] }>;
 
