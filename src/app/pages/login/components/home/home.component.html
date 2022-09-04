@@ -6,6 +6,8 @@
 </ion-header>
 
 <ion-content>
-  <app-playlist [rawPlaylists]="playlists"></app-playlist>
-  <app-other-playlists></app-other-playlists>
+  <app-my-playlist [rawPlaylists]="playlists"></app-my-playlist>
+  <app-other-playlists
+    [otherRawPlaylists]="otherRawPlaylists"
+  ></app-other-playlists>
 </ion-content>

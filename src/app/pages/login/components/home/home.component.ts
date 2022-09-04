@@ -13,6 +13,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class HomeComponent implements OnInit {
   public playlists: Observable<{ items: Playlist[] }>;
+  public otherRawPlaylists: Observable<any>;
 
   constructor(
     private router: Router,

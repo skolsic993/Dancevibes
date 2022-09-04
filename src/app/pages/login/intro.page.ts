@@ -6,11 +6,11 @@ import anime from 'animejs/lib/anime.es';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-intro',
+  templateUrl: './intro.page.html',
+  styleUrls: ['./intro.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class IntroPage implements OnInit {
   public user: User;
 
   session: any;

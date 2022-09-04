@@ -4,11 +4,11 @@ import { pluck } from 'rxjs/operators';
 import { Playlist } from '../../../../Models/playlist.model';
 
 @Component({
-  selector: 'app-playlist',
-  templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.scss'],
+  selector: 'app-my-playlist',
+  templateUrl: './my-playlist.component.html',
+  styleUrls: ['./my-playlist.component.scss'],
 })
-export class PlaylistComponent implements OnInit {
+export class MyPlaylistComponent implements OnInit {
   public playlists: Observable<Playlist[]>;
   @Input() rawPlaylists: Observable<{ items: Playlist[] }>;
 
