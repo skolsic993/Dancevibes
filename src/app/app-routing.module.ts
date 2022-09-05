@@ -13,6 +13,13 @@ const routes: Routes = [
       import('./pages/login/intro.module').then((m) => m.IntroPageModule),
   },
   {
+    path: 'playlists/:id',
+    loadChildren: () =>
+      import('./pages/playlist-detail/playlist-detail.module').then(
+        (m) => m.PlaylistDetailPageModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },

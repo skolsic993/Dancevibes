@@ -20,6 +20,6 @@ export class MyPlaylistComponent implements OnInit {
   }
 
   public onSelect(item: Playlist) {
-    this.router.navigate([`/home/${item.id}`]);
+    this.router.navigate([`/playlists/${item.id}`]);
   }
 }

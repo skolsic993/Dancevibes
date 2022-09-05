@@ -7,10 +7,10 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-playlist-detail',
-  templateUrl: './playlist-detail.component.html',
-  styleUrls: ['./playlist-detail.component.scss'],
+  templateUrl: './playlist-detail.page.html',
+  styleUrls: ['./playlist-detail.page.scss'],
 })
-export class PlaylistDetailComponent implements OnInit {
+export class PlaylistDetailPage implements OnInit {
   public playlist: Observable<Playlist>;
 
   constructor(

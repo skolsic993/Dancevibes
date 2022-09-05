@@ -14,7 +14,6 @@ import { IntroPageRoutingModule } from './intro-routing.module';
 import { SwiperModule } from 'swiper/angular';
 
 import { OtherPlaylistComponent } from './components/other-playlist/other-playlist.component';
-import { PlaylistDetailComponent } from './components/playlist-detail/playlist-detail.component';
 
 @NgModule({
   imports: [
@@ -31,7 +30,6 @@ import { PlaylistDetailComponent } from './components/playlist-detail/playlist-d
     MyPlaylistComponent,
     PlaylistItemComponent,
     OtherPlaylistComponent,
-    PlaylistDetailComponent,
   ],
 })
 export class IntroPageModule {}

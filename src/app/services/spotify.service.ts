@@ -10,6 +10,7 @@ import { Playlist } from '../Models/playlist.model';
 export class SpotifyService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
+  private baseUrl = 'https://api.spotify.com/v1';
   private user = this.authService.getUser();
 
   private access_token = JSON.parse(localStorage.getItem('supabase.auth.token'))
@@ -23,7 +24,7 @@ export class SpotifyService {
     const headers = this.headers;
 
     return this.http.get<{ items: Playlist[] }>(
-      `https://api.spotify.com/v1/users/${this.user?.user_metadata?.sub}/playlists`,
+      `${this.baseUrl}/users/${this.user?.user_metadata?.sub}/playlists`,
       {
         headers,
       }
@@ -34,7 +35,7 @@ export class SpotifyService {
     const headers = this.headers;
 
     return this.http.get<{ items: Playlist[] }>(
-      `https://api.spotify.com/v1/browse/featured-playlists`,
+      `${this.baseUrl}/browse/featured-playlists`,
       {
         headers,
       }
@@ -45,7 +46,7 @@ export class SpotifyService {
     const headers = this.headers;
 
     return this.http.get<{ items: Playlist[] }>(
-      `https://api.spotify.com/v1/browse/new-releases`,
+      `${this.baseUrl}/browse/new-releases`,
       {
         headers,
       }
@@ -56,7 +57,7 @@ export class SpotifyService {
     const headers = this.headers;
 
     return this.http.get<{ items: Playlist[] }>(
-      `https://api.spotify.com/v1/browse/categories`,
+      `${this.baseUrl}/browse/categories`,
       {
         headers,
       }
@@ -66,11 +67,8 @@ export class SpotifyService {
   public getSpecificPlaylist(id: string): Observable<Playlist> {
     const headers = this.headers;
 
-    return this.http.get<Playlist>(
-      `https://api.spotify.com/v1/playlists/${id}`,
-      {
-        headers,
-      }
-    );
+    return this.http.get<Playlist>(`${this.baseUrl}/playlists/${id}`, {
+      headers,
+    });
   }
 }
