@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>playlist-detail</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [goBack]="true"></app-header>
 
 <ion-content>
-  <p>{{ playlist | async | json }}</p>
+  <app-playlist-hero-section
+    [data]="heroSectionData"
+  ></app-playlist-hero-section>
+
+  <app-track-list [tracks]="tracks"></app-track-list>
 </ion-content>

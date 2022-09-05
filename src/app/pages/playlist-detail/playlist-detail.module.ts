@@ -1,6 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DescriptionPipe } from './../../pipes/description.pipe';
+import { SharedModule } from './../../shared/shared.module';
+import { PlaylistHeroSectionComponent } from './components/playlist-hero-section/playlist-hero-section.component';
+import { TrackListComponent } from './components/track-list/track-list.component';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +17,14 @@ import { PlaylistDetailPage } from './playlist-detail.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PlaylistDetailPageRoutingModule
+    PlaylistDetailPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [PlaylistDetailPage]
+  declarations: [
+    PlaylistDetailPage,
+    PlaylistHeroSectionComponent,
+    DescriptionPipe,
+    TrackListComponent,
+  ],
 })
 export class PlaylistDetailPageModule {}

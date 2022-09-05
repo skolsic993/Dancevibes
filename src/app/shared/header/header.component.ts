@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
@@ -11,12 +12,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit {
   @Input() title: string;
   @Input() subtitle: string;
+  @Input() goBack: boolean = false;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private loadingController: LoadingController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private location: Location
   ) {}
 
   ngOnInit() {}
@@ -44,5 +47,9 @@ export class HeaderComponent implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  async redirectToHome(): Promise<void> {
+    this.location.back();
   }
 }

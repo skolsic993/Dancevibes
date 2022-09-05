@@ -1,0 +1,46 @@
+.hero {
+  position: relative;
+  height: 35vh;
+  overflow: hidden;
+
+  img {
+    height: 170%;
+    border: 0;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(18, 20, 41, 0), #121429);
+  }
+
+  .hero-heading {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    z-index: 1;
+    padding: 0 20px;
+
+    h1 {
+      letter-spacing: 1px;
+      margin-bottom: 0;
+      font-weight: 600;
+      font-family: "Varela Round", sans-serif;
+      text-transform: capitalize;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      font-family: "Libre Franklin", sans-serif;
+    }
+  }
+}

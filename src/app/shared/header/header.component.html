@@ -1,5 +1,11 @@
 <ion-header>
   <div class="header">
+    <ion-icon
+      *ngIf="goBack"
+      (click)="redirectToHome()"
+      name="arrow-back-outline"
+      size="large"
+    ></ion-icon>
     <h2>LOGO</h2>
     <ion-icon (click)="logout()" name="log-out-outline" size="large"></ion-icon>
   </div>

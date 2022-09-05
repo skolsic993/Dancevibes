@@ -1,4 +1,5 @@
 import { Owner } from './owner.model';
+import { Track } from './track.model';
 
 export interface Playlist {
   collaborative: boolean;
@@ -13,7 +14,7 @@ export interface Playlist {
   primary_color: null;
   public: boolean;
   snapshot_id: string;
-  tracks: { href: string; total: 0 };
+  tracks: { href: string; total: 0; items: { track: Track } };
   type: string;
   uri: string;
 }
