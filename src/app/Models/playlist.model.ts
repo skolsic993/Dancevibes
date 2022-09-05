@@ -7,6 +7,7 @@ export interface Playlist {
   href: string;
   id: string;
   images: { url: string };
+  icons: { url: string };
   name: string;
   owner: Owner;
   primary_color: null;

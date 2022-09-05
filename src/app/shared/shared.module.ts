@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IntroPageRoutingModule } from '../pages/login/intro-routing.module';
-import { GoBackButtonComponent } from './go-back-button/go-back-button.component';
 import { HeaderComponent } from './header/header.component';
-import { InputComponent } from './input/input.component';
 
 @NgModule({
-  declarations: [InputComponent, HeaderComponent, GoBackButtonComponent],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -16,6 +14,6 @@ import { InputComponent } from './input/input.component';
     IntroPageRoutingModule,
     ReactiveFormsModule,
   ],
-  exports: [InputComponent, HeaderComponent, GoBackButtonComponent],
+  exports: [HeaderComponent],
 })
 export class SharedModule {}

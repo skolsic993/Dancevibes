@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { GoBackButtonComponent } from './go-back-button.component';
+import { PlaylistDetailComponent } from './playlist-detail.component';
 
-describe('GoBackButtonComponent', () => {
-  let component: GoBackButtonComponent;
-  let fixture: ComponentFixture<GoBackButtonComponent>;
+describe('PlaylistDetailComponent', () => {
+  let component: PlaylistDetailComponent;
+  let fixture: ComponentFixture<PlaylistDetailComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoBackButtonComponent ],
+      declarations: [ PlaylistDetailComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GoBackButtonComponent);
+    fixture = TestBed.createComponent(PlaylistDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Playlist } from 'src/app/Models/playlist.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -13,42 +10,16 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class HomeComponent implements OnInit {
   public playlists: Observable<{ items: Playlist[] }>;
-  public otherRawPlaylists: Observable<any>;
+  public featuredRawPlaylists: Observable<any>;
+  public newReleasedPlaylists: Observable<any>;
+  public rawCategories: Observable<any>;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private spotifyService: SpotifyService,
-    private loadingController: LoadingController,
-    private alertController: AlertController
-  ) {}
+  constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {
-    this.playlists = this.spotifyService.getPlaylists();
-  }
-
-  async logout(): Promise<void> {
-    const loading = await this.loadingController.create();
-    await loading.present();
-
-    this.authService.signOut().then(
-      async () => {
-        await loading.dismiss();
-        this.router.navigateByUrl('/', { replaceUrl: true });
-      },
-      async (err) => {
-        await loading.dismiss();
-        this.showError('Login failed!', err.message);
-      }
-    );
-  }
-
-  async showError(title: string, msg: string): Promise<void> {
-    const alert = await this.alertController.create({
-      header: title,
-      message: msg,
-      buttons: ['OK'],
-    });
-    await alert.present();
+    this.playlists = this.spotifyService.getFavoritePlaylists();
+    this.featuredRawPlaylists = this.spotifyService.getFeaturedPlaylists();
+    this.newReleasedPlaylists = this.spotifyService.getNewReleasedPlaylists();
+    this.rawCategories = this.spotifyService.getCategories();
   }
 }

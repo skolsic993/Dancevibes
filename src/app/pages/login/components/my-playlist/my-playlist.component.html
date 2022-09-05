@@ -1,10 +1,11 @@
 <div class="header">
   <h1>My favorite music mix</h1>
 </div>
-<swiper [slidesPerView]="1" [spaceBetween]="6" (slideChange)="onSlideChange()">
+<swiper [slidesPerView]="1" [spaceBetween]="6">
   <ng-template swiperSlide *ngFor="let playlist of playlists | async">
     <app-playlist-item
       [playlistItem]="playlist"
+      (click)="onSelect(playlist)"
       [ngStyle]="{
         width: '100%',
         'margin-right': '20px',

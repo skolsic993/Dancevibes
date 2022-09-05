@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { Playlist } from '../../../../Models/playlist.model';
@@ -12,13 +13,13 @@ export class MyPlaylistComponent implements OnInit {
   public playlists: Observable<Playlist[]>;
   @Input() rawPlaylists: Observable<{ items: Playlist[] }>;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.playlists = this.rawPlaylists.pipe(pluck('items'));
   }
 
-  onSlideChange() {
-    console.log('slide change');
+  public onSelect(item: Playlist) {
+    this.router.navigate([`/home/${item.id}`]);
   }
 }

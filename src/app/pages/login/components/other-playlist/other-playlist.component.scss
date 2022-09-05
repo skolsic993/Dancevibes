@@ -20,3 +20,13 @@ ion-segment-button {
   transition: all 0.3s ease;
   box-shadow: 1.5px 1.5px 4px #000, -1.5px -1.5px 4px #11275c;
 }
+
+swiper {
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.swiper-slide {
+  margin-right: 0;
+}

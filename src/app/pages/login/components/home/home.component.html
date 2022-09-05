@@ -1,13 +1,10 @@
-<ion-header>
-  <div class="header">
-    <h2>LOGO</h2>
-    <ion-icon (click)="logout()" name="log-out-outline" size="large"></ion-icon>
-  </div>
-</ion-header>
+<app-header></app-header>
 
 <ion-content>
   <app-my-playlist [rawPlaylists]="playlists"></app-my-playlist>
-  <app-other-playlists
-    [otherRawPlaylists]="otherRawPlaylists"
-  ></app-other-playlists>
+  <app-other-playlist
+    [featuredRawPlaylists]="featuredRawPlaylists"
+    [newReleasedPlaylists]="newReleasedPlaylists"
+    [rawCategories]="rawCategories"
+  ></app-other-playlist>
 </ion-content>

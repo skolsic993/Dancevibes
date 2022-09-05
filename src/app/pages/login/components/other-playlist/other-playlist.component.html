@@ -1,18 +1,29 @@
 <ion-segment
   swipe-gesture
   (ionChange)="segmentChanged($event)"
-  value="home"
-  [ngStyle]="{ 'margin-top': '20px' }"
+  value="features"
+  [ngStyle]="{ margin: '20px 0' }"
 >
-  <ion-segment-button value="home">
+  <ion-segment-button value="features">
     <span class="segment-text">Features</span>
   </ion-segment-button>
-  <ion-segment-button value="heart">
+  <ion-segment-button value="new-releases">
     <span class="segment-text">New Releases</span>
   </ion-segment-button>
-  <ion-segment-button value="pin">
+  <ion-segment-button value="categories">
     <span class="segment-text">Categories</span>
   </ion-segment-button>
 </ion-segment>
 
-<app-other-playlist-swiper></app-other-playlist-swiper>
+<swiper [slidesPerView]="3" [spaceBetween]="6">
+  <ng-template swiperSlide *ngFor="let playlist of playlists | async">
+    <app-playlist-item
+      [playlistItem]="playlist"
+      [ngStyle]="{
+        width: '100%',
+        'margin-right': '20px',
+        height: '100%'
+      }"
+    ></app-playlist-item>
+  </ng-template>
+</swiper>
