@@ -36,15 +36,23 @@ ion-card {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-ion-item {
-  background: transparent;
-}
-
 ion-content {
   --background: #121429;
 }
 
 ion-header {
+  background: #121429;
+}
+
+ion-list {
+  background: #121429;
+}
+
+ion-item {
+  --background: #121429;
+}
+
+.list-md {
   background: #121429;
 }
 

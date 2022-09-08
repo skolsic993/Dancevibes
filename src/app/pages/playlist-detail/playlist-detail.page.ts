@@ -13,7 +13,9 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class PlaylistDetailPage implements OnInit {
   public tracks: Observable<{
-    tracks: { href: string; total: 0; items: { track: Track } };
+    href: string;
+    total: 0;
+    items: { track: Track };
   }>;
   public playlist: Observable<Playlist>;
   public heroSectionData: Observable<{
@@ -57,7 +59,8 @@ export class PlaylistDetailPage implements OnInit {
         return {
           tracks: playlist.tracks,
         };
-      })
+      }),
+      pluck('tracks')
     );
   }
 }

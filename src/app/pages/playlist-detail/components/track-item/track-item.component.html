@@ -1,0 +1,12 @@
+<ion-list>
+  <div class="track-container">
+    <span class="number">
+      {{ trackItem?.uid }}
+    </span>
+
+    <img [src]="trackItem.album?.images[0]?.url" alt="Track background image" />
+    <div class="track-item">
+      <ion-label>{{ trackItem?.name }}</ion-label>
+    </div>
+  </div>
+</ion-list>

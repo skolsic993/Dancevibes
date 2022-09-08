@@ -1,3 +1,10 @@
-<ion-content>
-  <p *ngFor="let trackItem of trackList">{{ trackItem?.track?.name }}</p>
-</ion-content>
+<ng-container *ngFor="let trackItem of trackList">
+  <app-track-item [trackItem]="trackItem.track"></app-track-item>
+</ng-container>
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data..."
+  >
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

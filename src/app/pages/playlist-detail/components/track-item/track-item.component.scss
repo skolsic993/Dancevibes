@@ -1,0 +1,42 @@
+img {
+  width: 80px;
+}
+
+.track-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  overflow: hidden;
+  margin: 0 20px;
+  padding: 15px 0;
+  border-radius: 5px;
+  box-shadow: 1.5px 1.5px 4px #000, -1.5px -1.5px 4px #11275c;
+
+  .number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  .track-item {
+    padding: 0 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    ion-label {
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 1px;
+      font-family: "Libre Franklin", sans-serif;
+    }
+  }
+}

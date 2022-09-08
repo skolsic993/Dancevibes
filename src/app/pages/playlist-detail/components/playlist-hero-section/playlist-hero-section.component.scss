@@ -1,10 +1,10 @@
 .hero {
   position: relative;
-  height: 35vh;
+  height: 38vh;
   overflow: hidden;
 
   img {
-    height: 170%;
+    height: 125%;
     border: 0;
     object-fit: cover;
     width: 100%;
@@ -23,12 +23,14 @@
 
   .hero-heading {
     position: absolute;
-    top: 50%;
+    top: 60%;
+    width: 80%;
     color: #fff;
     z-index: 1;
     padding: 0 20px;
 
     h1 {
+      font-size: 22px;
       letter-spacing: 1px;
       margin-bottom: 0;
       font-weight: 600;
@@ -37,7 +39,7 @@
     }
 
     p {
-      font-size: 16px;
+      font-size: 13px;
       margin-top: 10px;
       letter-spacing: 1px;
       font-family: "Libre Franklin", sans-serif;

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
 import { Track } from './../../../../Models/track.model';
 
 @Component({
@@ -9,21 +9,43 @@ import { Track } from './../../../../Models/track.model';
   styleUrls: ['./track-list.component.scss'],
 })
 export class TrackListComponent implements OnInit {
-  public trackList: any;
+  public topLimit: number = 5;
+  public trackList: any = [];
+  public dataList: any;
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   @Input() tracks: Observable<{
-    tracks: { href: string; total: 0; items: { track: Track } };
+    href: string;
+    total: 0;
+    items: { track: Track };
   }>;
 
   constructor() {}
 
   ngOnInit() {
-    this.tracks
-      .pipe(pluck('tracks'))
-      .subscribe((tracks: { total: number; items: { track: Track } }) => {
-        this.trackList = tracks?.items;
-
-        console.log(this.trackList);
+    this.tracks.subscribe((items) => {
+      this.dataList = items?.items;
+      this.dataList.forEach((data: { track: Track }, index: number) => {
+        data.track.uid = index + 1;
       });
+
+      this.trackList = this.dataList?.slice(0, this.topLimit);
+    });
+  }
+
+  loadData(event) {
+    setTimeout(() => {
+      this.topLimit += 5;
+      this.trackList = this.dataList?.slice(0, this.topLimit);
+      event.target.complete();
+
+      if (this.trackList.length === this.dataList.length) {
+        event.target.disabled = true;
+      }
+    }, 500);
+  }
+
+  toggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
 }
