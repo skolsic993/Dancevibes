@@ -11,11 +11,9 @@ export class TrackItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.trackItem);
-  }
+  ngOnInit() {}
 
-  public convertMsToMinutesSeconds(milliseconds) {
+  public convertMsToMinutesSeconds(milliseconds: number) {
     const minutes = Math.floor(milliseconds / 60000);
     const seconds = Math.round((milliseconds % 60000) / 1000);
 
@@ -24,7 +22,7 @@ export class TrackItemComponent implements OnInit {
       : `${minutes}:${this.padTo2Digits(seconds)}`;
   }
 
-  private padTo2Digits(num) {
+  private padTo2Digits(num: number) {
     return num.toString().padStart(2, '0');
   }
 }

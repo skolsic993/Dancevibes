@@ -26,7 +26,11 @@ export class TrackListComponent implements OnInit {
     this.tracks.subscribe((items) => {
       this.dataList = items?.items;
       this.dataList.forEach((data: { track: Track }, index: number) => {
-        data.track.uid = index + 1;
+        if (index < 9) {
+          data.track.uid = '0' + (index + 1);
+        } else {
+          data.track.uid = `${index + 1}`;
+        }
       });
 
       this.trackList = this.dataList?.slice(0, this.topLimit);
