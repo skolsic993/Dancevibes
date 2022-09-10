@@ -39,7 +39,7 @@ export class TrackListComponent implements OnInit {
 
   loadData(event) {
     setTimeout(() => {
-      this.topLimit += 5;
+      this.topLimit += 4;
       this.trackList = this.dataList?.slice(0, this.topLimit);
       event.target.complete();
 

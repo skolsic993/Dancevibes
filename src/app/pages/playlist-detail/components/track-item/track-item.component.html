@@ -1,18 +1,19 @@
 <ion-list>
-  <div
-    class="track-container"
-    id="open-modal+{{ trackItem?.uid }}"
-    expand="block"
-  >
+  <div class="track-container" expand="block">
+    <ion-badge slot="start">{{ trackItem?.uid }}</ion-badge>
     <span class="number">
-      {{ trackItem?.uid }}
+      <ion-icon name="caret-forward-outline" size="large"></ion-icon>
     </span>
 
-    <img [src]="trackItem.album?.images[0]?.url" alt="Track background image" />
-    <div class="track-item">
-      <ion-label>{{ trackItem?.name }}</ion-label>
-      <p>{{ convertMsToMinutesSeconds(trackItem?.duration_ms) }}</p>
-      <ion-icon name="caret-forward-outline" size="large"></ion-icon>
+    <div class="track-detail" id="open-modal+{{ trackItem?.uid }}">
+      <img
+        [src]="trackItem.album?.images[0]?.url"
+        alt="Track background image"
+      />
+      <div class="track-item">
+        <ion-label>{{ trackItem?.name }}</ion-label>
+        <p>{{ convertMsToMinutesSeconds(trackItem?.duration_ms) }}</p>
+      </div>
     </div>
   </div>
 </ion-list>
