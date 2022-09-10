@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DescriptionPipe } from './../../pipes/description.pipe';
 import { SharedModule } from './../../shared/shared.module';
 import { PlaylistHeroSectionComponent } from './components/playlist-hero-section/playlist-hero-section.component';
+import { TrackDetailComponent } from './components/track-detail/track-detail.component';
 import { TrackItemComponent } from './components/track-item/track-item.component';
 import { TrackListComponent } from './components/track-list/track-list.component';
 
@@ -27,6 +28,7 @@ import { PlaylistDetailPage } from './playlist-detail.page';
     DescriptionPipe,
     TrackListComponent,
     TrackItemComponent,
+    TrackDetailComponent,
   ],
 })
 export class PlaylistDetailPageModule {}

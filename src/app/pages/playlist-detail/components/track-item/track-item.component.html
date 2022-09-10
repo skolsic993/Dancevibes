@@ -1,5 +1,9 @@
 <ion-list>
-  <div class="track-container">
+  <div
+    class="track-container"
+    id="open-modal+{{ trackItem?.uid }}"
+    expand="block"
+  >
     <span class="number">
       {{ trackItem?.uid }}
     </span>
@@ -12,3 +16,27 @@
     </div>
   </div>
 </ion-list>
+
+<ion-modal trigger="open-modal+{{ trackItem?.uid }}">
+  <ng-template>
+    <ion-header>
+      <div class="header">
+        <ion-toolbar>
+          <ion-title>{{ trackItem?.name }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-icon
+              (click)="close()"
+              name="close-outline"
+              size="large"
+            ></ion-icon>
+          </ion-buttons>
+          <ion-title></ion-title>
+        </ion-toolbar>
+      </div>
+    </ion-header>
+    <app-track-detail
+      [trackItem]="trackItem"
+      [ngStyle]="{ height: '100%' }"
+    ></app-track-detail>
+  </ng-template>
+</ion-modal>

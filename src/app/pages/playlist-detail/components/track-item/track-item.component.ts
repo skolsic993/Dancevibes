@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';
 
 @Component({
@@ -7,6 +8,9 @@ import { Track } from 'src/app/Models/track.model';
   styleUrls: ['./track-item.component.scss'],
 })
 export class TrackItemComponent implements OnInit {
+  public modalOpened: boolean = false;
+  public names: string[];
+
   @Input() trackItem: Track;
 
   constructor() {}
@@ -24,5 +28,17 @@ export class TrackItemComponent implements OnInit {
 
   private padTo2Digits(num: number) {
     return num.toString().padStart(2, '0');
+  }
+
+  @ViewChild(IonModal) modal: IonModal;
+
+  name: string;
+
+  public close() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  public confirm() {
+    this.modal.dismiss(this.name, 'confirm');
   }
 }

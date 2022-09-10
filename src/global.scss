@@ -50,12 +50,29 @@ ion-list {
   background: #121429;
 }
 
+ion-toolbar {
+  --background: #121429;
+}
+
 ion-item {
   --background: #121429;
 }
 
 .list-md {
   background: #121429;
+}
+
+ion-item-divider {
+  background: transparent;
+  min-height: 0;
+  border-bottom: 1px solid #8fadf5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
 }
 
 ion-fab-button {
