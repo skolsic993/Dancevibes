@@ -10,4 +10,5 @@ export interface Track {
   preview_url: string;
   album: Album;
   artists: Artists[];
+  uri: string;
 }

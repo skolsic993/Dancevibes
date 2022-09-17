@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-track-item',
@@ -8,12 +9,12 @@ import { Track } from 'src/app/Models/track.model';
   styleUrls: ['./track-item.component.scss'],
 })
 export class TrackItemComponent implements OnInit {
-  public modalOpened: boolean = false;
+  public playButton: boolean = true;
   public names: string[];
 
   @Input() trackItem: Track;
 
-  constructor() {}
+  constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {}
 
@@ -40,5 +41,17 @@ export class TrackItemComponent implements OnInit {
 
   public confirm() {
     this.modal.dismiss(this.name, 'confirm');
+  }
+
+  public playSong(trackItem: Track) {
+    this.playButton = false;
+    this.spotifyService.song.next(trackItem?.uri);
+    this.spotifyService.playSong(trackItem).subscribe();
+  }
+
+  public pauseSong(trackItem: Track) {
+    this.playButton = true;
+    this.spotifyService.song.next(trackItem?.uri);
+    this.spotifyService.pauseSong(trackItem?.uri).subscribe();
   }
 }

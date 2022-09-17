@@ -93,24 +93,6 @@ ion-fab-button {
   background-size: cover;
 }
 
-.primary {
-  padding: 1em 1.5em;
-  width: 120px;
-  display: flex;
-  border-radius: 0;
-  background: #10161c;
-  justify-content: space-evenly;
-  transition: all 0.4s ease;
-  align-items: center;
-  letter-spacing: 1px;
-  background: #121921;
-  box-shadow: 1.5px 1.5px 6px #000, -1.5px -1.5px 6px #444955;
-
-  &:focus {
-    box-shadow: inset 1.5px 1.5px 6px #000, inset -1.5px -1.5px 6px #444955;
-  }
-}
-
 .center {
   display: flex;
   align-items: center;

@@ -6,6 +6,7 @@ export interface Album {
   album_type: string;
   release_date: string;
   artists: Artists[];
+  uri: string;
   images: {
     url: string;
   };

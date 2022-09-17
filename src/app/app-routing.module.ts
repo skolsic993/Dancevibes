@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./pages/login/intro.module').then((m) => m.IntroPageModule),
+      import('./pages/home-page/intro.module').then((m) => m.IntroPageModule),
   },
   {
     path: 'playlists/:id',

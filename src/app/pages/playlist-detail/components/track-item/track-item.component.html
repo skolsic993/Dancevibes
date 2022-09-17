@@ -2,7 +2,19 @@
   <div class="track-container" expand="block">
     <ion-badge slot="start">{{ trackItem?.uid }}</ion-badge>
     <span class="number">
-      <ion-icon name="caret-forward-outline" size="large"></ion-icon>
+      <ng-container *ngIf="playButton">
+        <ion-icon
+          name="caret-forward-outline"
+          size="large"
+          (click)="playSong(trackItem)"
+        ></ion-icon>
+      </ng-container>
+      <ng-container *ngIf="!playButton">
+        <ion-icon
+          name="pause-outline"
+          (click)="pauseSong(trackItem)"
+        ></ion-icon>
+      </ng-container>
     </span>
 
     <div class="track-detail" id="open-modal+{{ trackItem?.uid }}">
