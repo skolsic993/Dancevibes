@@ -18,25 +18,13 @@
 
 //Headers font
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&family=Roboto:wght@100&family=Varela+Round&family=Work+Sans:wght@200&display=swap");
-//General font
-@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap");
+
 //Numbers
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
 @import "~swiper/scss";
 @import "~@ionic/angular/css/ionic-swiper";
-
-//#ff4961 crvena
-//#28ffb9
-ion-card {
-  width: 80%;
-  --background: rgba(0, 0, 0, 0.19);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.8px);
-  -webkit-backdrop-filter: blur(5.8px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
 
 ion-content {
   --background: #121429;
@@ -72,7 +60,6 @@ ion-item-divider {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 25px;
 }
 
 ion-fab-button {
