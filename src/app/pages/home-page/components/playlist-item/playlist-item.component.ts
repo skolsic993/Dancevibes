@@ -7,6 +7,7 @@ import { Playlist } from 'src/app/Models/playlist.model';
   styleUrls: ['./playlist-item.component.scss'],
 })
 export class PlaylistItemComponent implements OnInit {
+  @Input() height: any;
   @Input() playlistItem: Playlist;
 
   constructor() {}

@@ -1,0 +1,90 @@
+.recommended {
+  height: 205px;
+  margin: 0 20px;
+  border-radius: 5px;
+  background: rgb(18, 20, 41);
+  background: linear-gradient(
+    349deg,
+    rgba(18, 20, 41, 1) 0%,
+    rgba(18, 20, 41, 1) 26%,
+    rgba(106, 85, 140, 0.2805497198879552) 100%
+  );
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(68, 73, 85, 0.7);
+
+  ion-icon {
+    height: 28px;
+  }
+
+  .info {
+    display: flex;
+    padding: 15px 0 5px 15px;
+
+    img {
+      max-width: 100%;
+      width: 162px;
+      height: 145px;
+      border-radius: 5px;
+    }
+
+    .info-playlist {
+      padding: 0 15px 15px 15px;
+      overflow: hidden;
+
+      span {
+        color: #fff;
+        font-family: "Varela Round", sans-serif;
+        font-size: 8px;
+        letter-spacing: 0.8px;
+        margin-top: 0px;
+      }
+
+      h4 {
+        color: #fff;
+        font-family: "Varela Round", sans-serif;
+        font-size: 16px;
+        letter-spacing: 0.8px;
+        margin-top: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      p {
+        color: #fff;
+        font-family: "Varela Round", sans-serif;
+        font-size: 10px;
+        text-decoration: underline;
+        letter-spacing: 0.8px;
+        margin-top: 12px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .info-actions {
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    p {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.8px;
+      margin-top: 12px;
+      margin-right: 10px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .info-play {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

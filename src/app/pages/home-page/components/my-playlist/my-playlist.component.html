@@ -1,4 +1,4 @@
-<app-mini-header [title]="'Dobro vece'"></app-mini-header>
+<app-mini-header [title]="'Good evening'"></app-mini-header>
 
 <ion-grid>
   <ion-row>
@@ -12,6 +12,7 @@
         }"
       >
         <app-playlist-item
+          [height]="'55px'"
           [playlistItem]="playlist"
           (click)="onSelect(playlist)"
         ></app-playlist-item>
@@ -20,18 +21,8 @@
   </ion-row>
 </ion-grid>
 
-<app-mini-header [title]="'Preporuceno'"></app-mini-header>
+<app-mini-header [title]="'Recommended'"></app-mini-header>
 
-<!--<swiper [slidesPerView]="1" [spaceBetween]="6">
-  <ng-template swiperSlide *ngFor="let playlist of playlists | async">
-    <app-playlist-item
-      [playlistItem]="playlist"
-      (click)="onSelect(playlist)"
-      [ngStyle]="{
-        width: '100%',
-        'margin-right': '20px',
-        height: '100%'
-      }"
-    ></app-playlist-item>
-  </ng-template>
-</swiper>-->
+<app-recommended-playlist
+  [newReleasedPlaylists]="releasedPlaylists | async"
+></app-recommended-playlist>

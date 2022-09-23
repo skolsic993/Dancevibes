@@ -1,5 +1,5 @@
 <ion-card>
-  <div class="header-card">
+  <div class="header-card" [ngStyle]="{ height: height }">
     <img [src]="getFirstImage()" alt="Background Image" />
     <p>{{ playlistItem?.name }}</p>
   </div>

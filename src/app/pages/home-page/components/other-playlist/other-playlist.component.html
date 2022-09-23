@@ -1,4 +1,4 @@
-<ion-segment
+<!--<ion-segment
   swipe-gesture
   (ionChange)="segmentChanged($event)"
   value="features"
@@ -19,6 +19,20 @@
   <ng-template swiperSlide *ngFor="let playlist of playlists | async">
     <app-playlist-item
       [playlistItem]="playlist"
+      [ngStyle]="{
+        width: '100%',
+        'margin-right': '20px',
+        height: '100%'
+      }"
+    ></app-playlist-item>
+  </ng-template>
+</swiper>-->
+
+<swiper [slidesPerView]="2" [spaceBetween]="6">
+  <ng-template swiperSlide *ngFor="let playlist of playlists | async">
+    <app-playlist-item
+      [playlistItem]="playlist"
+      (click)="onSelect(playlist)"
       [ngStyle]="{
         width: '100%',
         'margin-right': '20px',

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
@@ -14,7 +15,7 @@ export class OtherPlaylistComponent implements OnInit {
   @Input() newReleasedPlaylists: Observable<any>;
   @Input() rawCategories: Observable<any>;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.segmentChanged({ detail: { value: 'features' } });
@@ -44,5 +45,9 @@ export class OtherPlaylistComponent implements OnInit {
         break;
       }
     }
+  }
+
+  public onSelect(item: Playlist) {
+    this.router.navigate([`/playlists/${item.id}`]);
   }
 }

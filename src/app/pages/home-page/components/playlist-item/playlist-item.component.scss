@@ -1,12 +1,10 @@
 ion-card {
   margin: 0;
   background: #121429;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7),
-    -1px -1px 1px rgba(68, 73, 85, 0.35);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(68, 73, 85, 0.7);
 
   .header-card {
     width: 100%;
-    height: 55px;
     display: flex;
     align-items: center;
 
@@ -24,7 +22,8 @@ ion-card {
       max-width: 100%;
       width: 51px;
       border: 0;
-      height: 54px;
+      object-fit: cover;
+      height: 100%;
     }
   }
 }

@@ -1,0 +1,26 @@
+<div class="recommended">
+  <div class="info">
+    <img
+      [src]="(newReleasedPlaylists | randomize)?.images[0]?.url"
+      alt="Recommended image"
+    />
+    <div class="info-playlist">
+      <span>playlist</span>
+      <h4>{{ (newReleasedPlaylists | randomize)?.name }}</h4>
+      <p>{{ (newReleasedPlaylists | randomize)?.artists[0]?.name }}</p>
+    </div>
+  </div>
+  <div class="info-actions">
+    <ion-icon name="heart-outline" size="large"></ion-icon>
+    <div class="info-play">
+      <p>
+        Number of songs: {{ (newReleasedPlaylists | randomize)?.total_tracks }}
+      </p>
+      <ion-icon
+        class="icon-size"
+        size="large"
+        name="play-circle-outline"
+      ></ion-icon>
+    </div>
+  </div>
+</div>

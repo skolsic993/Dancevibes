@@ -11,12 +11,19 @@ import { Playlist } from '../../../../Models/playlist.model';
 })
 export class MyPlaylistComponent implements OnInit {
   public playlists: Observable<Playlist[]>;
+  public releasedPlaylists: Observable<Playlist[]>;
+
   @Input() rawPlaylists: Observable<{ items: Playlist[] }>;
+  @Input() newReleasedPlaylists: Observable<{ items: Playlist[] }>;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.playlists = this.rawPlaylists.pipe(pluck('items'));
+    this.releasedPlaylists = this.newReleasedPlaylists.pipe(
+      pluck('albums'),
+      pluck('items')
+    );
   }
 
   public onSelect(item: Playlist) {
