@@ -1,0 +1,24 @@
+<app-mini-header [title]="'Categories'"></app-mini-header>
+
+<div class="other-playlist">
+  <swiper [slidesPerView]="2" [spaceBetween]="6">
+    <ng-template swiperSlide *ngFor="let playlist of playlists | async">
+      <app-playlist-item
+        [width]="'100%'"
+        [height]="'160px'"
+        [shadow]="'none'"
+        [textPadding]="'0 10px'"
+        [textSize]="'9px'"
+        [imageHeight]="'130px'"
+        [flexDirection]="'column'"
+        [playlistItem]="playlist"
+        (click)="onSelect(playlist)"
+        [ngStyle]="{
+          width: '100%',
+          'margin-right': '20px',
+          height: '100%'
+        }"
+      ></app-playlist-item>
+    </ng-template>
+  </swiper>
+</div>

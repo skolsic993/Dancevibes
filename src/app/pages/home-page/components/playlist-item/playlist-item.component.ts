@@ -7,7 +7,13 @@ import { Playlist } from 'src/app/Models/playlist.model';
   styleUrls: ['./playlist-item.component.scss'],
 })
 export class PlaylistItemComponent implements OnInit {
-  @Input() height: any;
+  @Input() width: string;
+  @Input() textPadding: string;
+  @Input() textSize: string;
+  @Input() height: string;
+  @Input() shadow: string;
+  @Input() imageHeight: string;
+  @Input() flexDirection: string;
   @Input() playlistItem: Playlist;
 
   constructor() {}

@@ -1,6 +1,15 @@
-<ion-card>
-  <div class="header-card" [ngStyle]="{ height: height }">
-    <img [src]="getFirstImage()" alt="Background Image" />
-    <p>{{ playlistItem?.name }}</p>
+<ion-card [ngStyle]="{ 'box-shadow': shadow }">
+  <div
+    class="header-card"
+    [ngStyle]="{ height, 'flex-direction': flexDirection }"
+  >
+    <img
+      [ngStyle]="{ width, 'height': imageHeight }"
+      [src]="getFirstImage()"
+      alt="Background Image"
+    />
+    <p [ngStyle]="{ 'font-size': textSize, padding: textPadding }">
+      {{ playlistItem?.name }}
+    </p>
   </div>
 </ion-card>

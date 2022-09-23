@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../../shared/shared.module';
+import { HomeSwiperComponent } from './components/home-swiper/home-swiper.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyPlaylistComponent } from './components/my-playlist/my-playlist.component';
 import { PlaylistItemComponent } from './components/playlist-item/playlist-item.component';
@@ -31,6 +32,7 @@ import { OtherPlaylistComponent } from './components/other-playlist/other-playli
     HomeComponent,
     MyPlaylistComponent,
     RandomElementPipe,
+    HomeSwiperComponent,
     PlaylistItemComponent,
     OtherPlaylistComponent,
     RecommendedPlaylistComponent,

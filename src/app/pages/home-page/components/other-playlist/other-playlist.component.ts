@@ -11,40 +11,27 @@ import { Playlist } from 'src/app/Models/playlist.model';
 })
 export class OtherPlaylistComponent implements OnInit {
   public playlists: Observable<Playlist[]>;
+  public newPlaylists: Observable<Playlist[]>;
+  public categories: Observable<Playlist[]>;
   @Input() featuredRawPlaylists: Observable<{ items: Playlist[] }>;
-  @Input() newReleasedPlaylists: Observable<any>;
-  @Input() rawCategories: Observable<any>;
+  @Input() newReleasedPlaylists: Observable<{ items: Playlist[] }>;
+  @Input() rawCategories: Observable<{ items: Playlist[] }>;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.segmentChanged({ detail: { value: 'features' } });
-  }
-
-  public segmentChanged(event: any): void {
-    switch (event?.detail?.value) {
-      case 'new-releases': {
-        this.playlists = this.newReleasedPlaylists.pipe(
-          pluck('albums'),
-          pluck('items')
-        );
-        break;
-      }
-      case 'categories': {
-        this.playlists = this.rawCategories.pipe(
-          pluck('categories'),
-          pluck('items')
-        );
-        break;
-      }
-      default: {
-        this.playlists = this.featuredRawPlaylists.pipe(
-          pluck('playlists'),
-          pluck('items')
-        );
-        break;
-      }
-    }
+    this.playlists = this.featuredRawPlaylists.pipe(
+      pluck('playlists'),
+      pluck('items')
+    );
+    this.newPlaylists = this.newReleasedPlaylists.pipe(
+      pluck('albums'),
+      pluck('items')
+    );
+    this.categories = this.rawCategories.pipe(
+      pluck('categories'),
+      pluck('items')
+    );
   }
 
   public onSelect(item: Playlist) {
