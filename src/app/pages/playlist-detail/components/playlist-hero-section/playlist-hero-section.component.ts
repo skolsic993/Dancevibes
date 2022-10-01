@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Track } from 'src/app/Models/track.model';
+import { AuthService } from './../../../../services/auth.service';
 
 @Component({
   selector: 'app-playlist-hero-section',
@@ -22,7 +23,7 @@ export class PlaylistHeroSectionComponent implements OnInit {
     image: string;
   }>;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.data.subscribe(
@@ -30,5 +31,9 @@ export class PlaylistHeroSectionComponent implements OnInit {
         this.heroSectionData = data;
       }
     );
+  }
+
+  public getUsername(): string {
+    return this.authService.getUser()?.user_metadata?.full_name;
   }
 }

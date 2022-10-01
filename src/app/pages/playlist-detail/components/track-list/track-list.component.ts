@@ -9,7 +9,7 @@ import { Track } from './../../../../Models/track.model';
   styleUrls: ['./track-list.component.scss'],
 })
 export class TrackListComponent implements OnInit {
-  public topLimit: number = 5;
+  public topLimit: number = 7;
   public trackList: any = [];
   public dataList: any;
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;

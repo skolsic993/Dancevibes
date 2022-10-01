@@ -1,8 +1,44 @@
 <ion-content class="ion-padding">
-  <img [src]="trackItem.album.images[0].url" alt="" />
+  <div class="detail-header">
+    <img [src]="trackItem.album.images[0].url" alt="" />
+    <ion-title>{{ trackItem?.name }}</ion-title>
+  </div>
+
   <ion-row>
-    <ion-col size="9">
-      <h5>Album:</h5>
+    <ion-col size="12">
+      <div class="track-action">
+        <ion-icon name="heart-outline"></ion-icon>
+        <p>Like</p>
+      </div>
+
+      <div class="track-action">
+        <ion-icon name="ban-outline"></ion-icon>
+        <p>Hide this song</p>
+      </div>
+
+      <div class="track-action">
+        <ion-icon
+          name="albums-outline"
+          (click)="presentActionAuthor()"
+        ></ion-icon>
+        <p>Show Album</p>
+        <div class="container">
+          <code *ngIf="result"> {{ result }} </code>
+        </div>
+      </div>
+
+      <div class="track-action">
+        <ion-icon
+          name="people-outline"
+          (click)="presentActionArtists()"
+        ></ion-icon>
+        <p>Show Artists</p>
+        <div class="container">
+          <code *ngIf="result"> {{ result }} </code>
+        </div>
+      </div>
+
+      <!--<h5>Album:</h5>
       <p>{{ trackItem?.album?.name }}</p>
       <ion-item-divider></ion-item-divider>
       <h5>Artists:</h5>
@@ -10,13 +46,7 @@
       <ion-item-divider></ion-item-divider>
       <h5>Release Date:</h5>
       <p>{{ trackItem?.album.release_date }}</p>
-      <ion-item-divider></ion-item-divider>
-    </ion-col>
-    <ion-col
-      size="3"
-      [ngStyle]="{ 'margin-top': '12px', 'text-align': 'center' }"
-    >
-      <ion-icon name="heart-outline" size="large"></ion-icon>
+      <ion-item-divider></ion-item-divider>-->
     </ion-col>
   </ion-row>
 </ion-content>

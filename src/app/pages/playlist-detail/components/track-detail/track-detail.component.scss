@@ -3,16 +3,47 @@ ion-content {
   --padding-end: 20px;
 }
 
-ion-title {
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-family: "Libre Franklin", sans-serif;
+.detail-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ion-title {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family: "Libre Franklin", sans-serif;
+    position: relative;
+    height: 30px;
+  }
+
+  img {
+    border-radius: 10px;
+    width: 60%;
+    height: 200px;
+    object-fit: cover;
+  }
 }
 
-img {
-  border-radius: 10px;
+.track-action {
+  display: flex;
+  align-items: center;
   width: 100%;
+  margin-bottom: 10px;
+
+  ion-icon {
+    width: 30px;
+    height: 28px;
+  }
+
+  p {
+    font-size: 15px;
+    font-family: "Varela Round", sans-serif;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0 0 0 20px;
+  }
 }
 
 h5 {
@@ -26,4 +57,16 @@ p {
   font-size: 12px;
   font-family: "Libre Franklin", sans-serif;
   letter-spacing: 1px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+code {
+  white-space: pre-wrap;
 }

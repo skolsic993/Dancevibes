@@ -1,32 +1,24 @@
 <ion-list>
   <div class="track-container" expand="block">
-    <ion-badge slot="start">{{ trackItem?.uid }}</ion-badge>
-    <span class="number">
-      <ng-container *ngIf="playButton">
-        <ion-icon
-          name="caret-forward-outline"
-          size="large"
-          (click)="playSong(trackItem)"
-        ></ion-icon>
-      </ng-container>
-      <ng-container *ngIf="!playButton">
-        <ion-icon
-          name="pause-outline"
-          (click)="pauseSong(trackItem)"
-        ></ion-icon>
-      </ng-container>
-    </span>
-
-    <div class="track-detail" id="open-modal+{{ trackItem?.uid }}">
+    <div class="track-detail" (click)="playSong(trackItem)">
       <img
         [src]="trackItem.album?.images[0]?.url"
         alt="Track background image"
       />
       <div class="track-item">
         <ion-label>{{ trackItem?.name }}</ion-label>
-        <p>{{ convertMsToMinutesSeconds(trackItem?.duration_ms) }}</p>
+        <div class="inline">
+          <div class="lyrics">
+            <span>lyrics</span>
+          </div>
+          <p>{{ getTrackArtists() }}</p>
+        </div>
       </div>
     </div>
+    <ion-icon
+      name="ellipsis-vertical-outline"
+      id="open-modal+{{ trackItem?.uid }}"
+    ></ion-icon>
   </div>
 </ion-list>
 
@@ -35,7 +27,6 @@
     <ion-header>
       <div class="header">
         <ion-toolbar>
-          <ion-title>{{ trackItem?.name }}</ion-title>
           <ion-buttons slot="end">
             <ion-icon
               (click)="close()"
