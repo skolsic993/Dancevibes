@@ -26,6 +26,14 @@
 @import "~swiper/scss";
 @import "~@ionic/angular/css/ionic-swiper";
 
+:root {
+  --ion-color-step-600: red;
+}
+
+.input-clear-icon.sc-ion-input-ios {
+  background-image: url("/assets/icon/icon-close.svg");
+}
+
 ion-content {
   --background: #121429;
 }
@@ -44,6 +52,7 @@ ion-toolbar {
 
 ion-item {
   --background: #121429;
+  --border-color: #2b99ff;
 }
 
 .list-md {
@@ -52,6 +61,13 @@ ion-item {
 
 .list-ios {
   background: transparent;
+}
+
+.action-sheet-title.action-sheet-has-sub-title.sc-ion-action-sheet-ios {
+  font-size: 25px;
+  color: #fff;
+  font-family: "Varela Round", sans-serif;
+  background: #2b99ff;
 }
 
 ion-item-divider {
@@ -76,7 +92,6 @@ ion-fab-button {
   height: 100%;
   display: flex;
   flex-direction: column;
-
   background-image: url("./assets/images/background.jpg");
   background-position: center center;
   background-repeat: no-repeat;

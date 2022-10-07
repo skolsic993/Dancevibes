@@ -54,13 +54,13 @@ export class TrackItemComponent implements OnInit {
 
   public playSong(trackItem: Track) {
     this.playButton = false;
-    this.spotifyService.song.next(trackItem?.uri);
+    this.spotifyService.song$.next(trackItem?.uri);
     this.spotifyService.playSong(trackItem).subscribe();
   }
 
   public pauseSong(trackItem: Track) {
     this.playButton = true;
-    this.spotifyService.song.next(trackItem?.uri);
+    this.spotifyService.song$.next(trackItem?.uri);
     this.spotifyService.pauseSong(trackItem?.uri).subscribe();
   }
 }

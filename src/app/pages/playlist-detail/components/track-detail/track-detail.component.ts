@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-track-detail',
@@ -8,15 +10,23 @@ import { Track } from 'src/app/Models/track.model';
   styleUrls: ['./track-detail.component.scss'],
 })
 export class TrackDetailComponent implements OnInit {
+  public id: string;
   public result: string;
   public names: string[];
   @Input() trackItem: Track;
 
-  constructor(private actionSheetCtrl: ActionSheetController) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private spotifyService: SpotifyService,
+    private actionSheetCtrl: ActionSheetController
+  ) {}
 
   ngOnInit() {
+    this.spotifyService.song$.next(this.trackItem?.id);
     this.getArtists();
-    console.log(this.trackItem);
+    this.activatedRoute.params.subscribe(
+      (param: { id: string }) => (this.id = param.id)
+    );
   }
 
   public getArtists(): string[] {
@@ -41,5 +51,12 @@ export class TrackDetailComponent implements OnInit {
     });
 
     await actionSheet.present();
+  }
+
+  public close() {
+    const modals = document.getElementsByTagName('ion-modal');
+    [].forEach.call(modals, function (el: any) {
+      el.parentNode.removeChild(el);
+    });
   }
 }

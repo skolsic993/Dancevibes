@@ -10,14 +10,14 @@ export interface Playlist {
   id: string;
   artists: Artists;
   total_tracks: number;
-  images: { url: string };
+  images: [{ url: string }];
   icons: { url: string };
   name: string;
   owner: Owner;
   primary_color: null;
   public: boolean;
   snapshot_id: string;
-  tracks: { href: string; total: 0; items: { track: Track } };
+  tracks: { href: string; total: 0; items: [{ track: Track }] };
   type: string;
   uri: string;
 }

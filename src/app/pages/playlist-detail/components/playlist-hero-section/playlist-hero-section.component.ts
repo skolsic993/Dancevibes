@@ -36,4 +36,10 @@ export class PlaylistHeroSectionComponent implements OnInit {
   public getUsername(): string {
     return this.authService.getUser()?.user_metadata?.full_name;
   }
+
+  public showImage(): string {
+    return this.heroSectionData?.image
+      ? this.heroSectionData?.image
+      : '/assets/no-image.png';
+  }
 }

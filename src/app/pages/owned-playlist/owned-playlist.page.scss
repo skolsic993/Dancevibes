@@ -1,0 +1,48 @@
+form {
+  height: 100%;
+
+  .new-playlist {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+
+    ion-input {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+      font-size: 18px;
+
+      button {
+        background: #fff;
+      }
+    }
+
+    .ion-color-light {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+      font-size: 15px;
+      transition: all 0.4s ease;
+      width: 80%;
+    }
+
+    .item-has-focus {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+    }
+  }
+
+  .errors {
+    background: #ff7272;
+
+    p {
+      margin: 0;
+      padding: 5px;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      font-family: "Varela Round", sans-serif;
+    }
+  }
+}

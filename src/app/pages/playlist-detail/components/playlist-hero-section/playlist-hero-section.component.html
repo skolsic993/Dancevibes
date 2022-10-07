@@ -2,14 +2,17 @@
 
 <div class="hero">
   <div class="image-hero">
-    <img [src]="heroSectionData?.image" alt="Playlist image" />
+    <img [src]="showImage()" alt="Playlist image" />
   </div>
 
   <div class="hero-heading">
     <div class="hero-text">
       <p>{{ heroSectionData?.description | description }}</p>
       <p>
-        <span>Made for the user: </span> <span> {{ getUsername() }}</span>
+        <span
+          >Made {{ heroSectionData?.description ? "for" : "by" }} the user:
+        </span>
+        <span> {{ getUsername() }}</span>
       </p>
     </div>
 

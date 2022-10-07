@@ -23,6 +23,6 @@ export class PlaylistItemComponent implements OnInit {
   public getFirstImage(): string {
     return this.playlistItem?.images
       ? this.playlistItem?.images[0]?.url
-      : this.playlistItem?.icons[0]?.url;
+      : `assets/icon/playlistWithoutImage.png`;
   }
 }

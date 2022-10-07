@@ -12,41 +12,34 @@
       </div>
 
       <div class="track-action">
-        <ion-icon name="ban-outline"></ion-icon>
-        <p>Hide this song</p>
+        <ion-icon name="ban-outline" class="disabled"></ion-icon>
+        <p class="disabled">Hide this song</p>
       </div>
 
-      <div class="track-action">
-        <ion-icon
-          name="albums-outline"
-          (click)="presentActionAuthor()"
-        ></ion-icon>
+      <div
+        class="track-action"
+        [routerLink]="['/owned-playlist']"
+        (click)="close()"
+      >
+        <ion-icon name="musical-notes-outline"></ion-icon>
+        <p>Add to the Playlist</p>
+      </div>
+
+      <div class="track-action" (click)="presentActionAuthor()">
+        <ion-icon name="albums-outline"></ion-icon>
         <p>Show Album</p>
         <div class="container">
           <code *ngIf="result"> {{ result }} </code>
         </div>
       </div>
 
-      <div class="track-action">
-        <ion-icon
-          name="people-outline"
-          (click)="presentActionArtists()"
-        ></ion-icon>
+      <div class="track-action" (click)="presentActionArtists()">
+        <ion-icon name="people-outline"></ion-icon>
         <p>Show Artists</p>
         <div class="container">
           <code *ngIf="result"> {{ result }} </code>
         </div>
       </div>
-
-      <!--<h5>Album:</h5>
-      <p>{{ trackItem?.album?.name }}</p>
-      <ion-item-divider></ion-item-divider>
-      <h5>Artists:</h5>
-      <p>{{ names }}</p>
-      <ion-item-divider></ion-item-divider>
-      <h5>Release Date:</h5>
-      <p>{{ trackItem?.album.release_date }}</p>
-      <ion-item-divider></ion-item-divider>-->
     </ion-col>
   </ion-row>
 </ion-content>

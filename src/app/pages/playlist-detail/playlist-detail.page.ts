@@ -15,7 +15,7 @@ export class PlaylistDetailPage implements OnInit {
   public tracks: Observable<{
     href: string;
     total: 0;
-    items: { track: Track };
+    items: [{ track: Track }];
   }>;
   public playlist: Observable<Playlist>;
   public heroSectionData: Observable<{
@@ -30,6 +30,7 @@ export class PlaylistDetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    //this.spotifyService.addTrack().subscribe((v) => console.log(v, 'AAAAA'));
     this.playlist = this.activatedRoute.params.pipe(
       pluck('id'),
       switchMap((id: string) => {
@@ -47,7 +48,7 @@ export class PlaylistDetailPage implements OnInit {
         return {
           name: playlist.name,
           description: playlist.description,
-          image: playlist.images[0].url,
+          image: playlist.images[0]?.url,
         };
       })
     );

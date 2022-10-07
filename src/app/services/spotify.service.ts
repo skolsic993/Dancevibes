@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Track } from 'src/app/Models/track.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { CurrentlySong } from '../Models/currently-song';
 import { Playlist } from '../Models/playlist.model';
-import { CurrentlySong } from './../Models/CurrentlySong';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SpotifyService {
-  public song: BehaviorSubject<string> = new BehaviorSubject('');
+  public song$: BehaviorSubject<string> = new BehaviorSubject('');
+  public refresh$: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -25,7 +26,6 @@ export class SpotifyService {
   });
 
   public playSong(trackItem: Track): Observable<void> {
-    //api.spotify.com/v1/me/player/next
     https: console.log(trackItem);
     const headers = this.headers;
     const body = {
@@ -101,6 +101,36 @@ export class SpotifyService {
     );
   }
 
+  public getUser(): Observable<any> {
+    const headers = this.headers;
+
+    return this.http.get<any>(`${this.baseUrl}/me`, {
+      headers,
+    });
+  }
+
+  public createPlaylist(
+    createPlaylistForm: {
+      name: string;
+    },
+    id: string
+  ): Observable<Playlist> {
+    const headers = this.headers;
+    const body = {
+      name: createPlaylistForm.name,
+      description: '',
+      public: false,
+    };
+
+    return this.http.post<Playlist>(
+      `${this.baseUrl}/users/${id}/playlists`,
+      body,
+      {
+        headers,
+      }
+    );
+  }
+
   public getLikedTrack(id: string): any {
     const headers = this.headers;
 
@@ -138,6 +168,40 @@ export class SpotifyService {
     const headers = this.headers;
 
     return this.http.get<Playlist>(`${this.baseUrl}/playlists/${id}`, {
+      headers,
+    });
+  }
+
+  public addItemsToThePlaylist(id: string, track: Track): Observable<void> {
+    const headers = this.headers;
+    const body = {
+      uris: [track?.uri],
+    };
+
+    return this.http.post<void>(
+      `${this.baseUrl}/playlists/${id}/tracks`,
+      body,
+      {
+        headers,
+      }
+    );
+  }
+
+  public getUsersPlaylists(user) {
+    const headers = this.headers;
+
+    return this.http.get<Playlist>(
+      `${this.baseUrl}/users/${user.id}/playlists`,
+      {
+        headers,
+      }
+    );
+  }
+
+  public getSpecificTrack(id: string): Observable<Track> {
+    const headers = this.headers;
+
+    return this.http.get<Track>(`${this.baseUrl}/tracks/${id}`, {
       headers,
     });
   }

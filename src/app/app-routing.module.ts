@@ -20,6 +20,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'owned-playlist',
+    loadChildren: () =>
+      import('./pages/owned-playlist/owned-playlist.module').then(
+        (m) => m.OwnedPlaylistPageModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
