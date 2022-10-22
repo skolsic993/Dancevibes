@@ -1,8 +1,17 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
-import { concatMap, pluck, switchMap } from 'rxjs/operators';
+import {
+  concatMap,
+  delay,
+  first,
+  pluck,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
 import { Track } from 'src/app/Models/track.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -17,8 +26,10 @@ export class OwnedPlaylistPage implements OnInit {
   public numberOfPlaylists: boolean = true;
   public name: string;
   public id: string;
-  public usersPlaylist: Playlist[];
+  public ownerPlaylists: Playlist[];
   public user: User;
+  public track: Track;
+  public createNewPlaylist: boolean = false;
 
   public createPlaylistForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -31,10 +42,11 @@ export class OwnedPlaylistPage implements OnInit {
   constructor(
     private router: Router,
     private spotifyService: SpotifyService,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    private location: Location
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.spotifyService
       .getUser()
       .pipe(
@@ -43,13 +55,16 @@ export class OwnedPlaylistPage implements OnInit {
           this.id = user.id;
           return this.spotifyService.getUsersPlaylists(user);
         }),
-        pluck('items')
+        pluck('items'),
+        shareReplay()
       )
       .subscribe((playlists: Playlist[]) => {
-        this.usersPlaylist = playlists.filter((item: Playlist) => {
+        this.ownerPlaylists = playlists.filter((item: Playlist) => {
           return item.owner.display_name == this.user.display_name;
         });
       });
+
+    this.getSong();
   }
 
   public showErrors(): string {
@@ -68,7 +83,7 @@ export class OwnedPlaylistPage implements OnInit {
     }
   }
 
-  async presentActionArtists() {
+  async presentActionArtists(): Promise<void> {
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Errors',
       subHeader: this.showErrors(),
@@ -78,7 +93,16 @@ export class OwnedPlaylistPage implements OnInit {
     await actionSheet.present();
   }
 
-  public onSubmit() {
+  private getSong(): void {
+    this.spotifyService.song$
+      .pipe(
+        first(),
+        switchMap((id: string) => this.spotifyService.getSpecificTrack(id))
+      )
+      .subscribe((track: Track) => (this.track = track));
+  }
+
+  public onSubmit(): void {
     if (this.createPlaylistForm.invalid) {
       this.presentActionArtists();
       return;
@@ -88,20 +112,21 @@ export class OwnedPlaylistPage implements OnInit {
       .createPlaylist(this.createPlaylistForm.value, this.id)
       .pipe(
         switchMap((response: Playlist) => {
-          return this.spotifyService.song$.pipe(
-            concatMap((id: string) => {
-              return this.spotifyService.getSpecificTrack(id);
-            }),
-            switchMap((track: Track) =>
-              this.spotifyService.addItemsToThePlaylist(response.id, track)
-            )
+          console.log(this.track);
+          return this.spotifyService.addItemsToThePlaylist(
+            response.id,
+            this.track
           );
-        })
+        }),
+        tap(() => this.spotifyService.refreshPlaylist$.next(true)),
+        delay(100)
       )
-      .subscribe({
-        next: () => {
-          this.router.navigateByUrl('/home');
-        },
-      });
+      .subscribe();
+
+    this.router.navigateByUrl('/home');
+  }
+
+  async redirectToHome(): Promise<void> {
+    this.location.back();
   }
 }

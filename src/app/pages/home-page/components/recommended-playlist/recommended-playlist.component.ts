@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Playlist } from 'src/app/Models/playlist.model';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-recommended-playlist',
@@ -9,7 +10,11 @@ import { Playlist } from 'src/app/Models/playlist.model';
 export class RecommendedPlaylistComponent implements OnInit {
   @Input() newReleasedPlaylists: Playlist[];
 
-  constructor() {}
+  constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {}
+
+  public getPlaylist() {
+    console.log('GET ALBUMS');
+  }
 }

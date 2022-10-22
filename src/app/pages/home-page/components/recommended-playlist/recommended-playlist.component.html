@@ -1,4 +1,4 @@
-<div class="recommended">
+<div class="recommended" (click)="getPlaylist()">
   <div class="info">
     <img
       [src]="(newReleasedPlaylists | randomize)?.images[0]?.url"

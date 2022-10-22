@@ -1,0 +1,6 @@
+<app-header [goBack]="true"></app-header>
+<ion-content>
+  <div *ngFor="let playlist of playlists" (click)="addSongToPlaylist(playlist)">
+    {{ playlist.name }}
+  </div>
+</ion-content>

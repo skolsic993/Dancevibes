@@ -11,7 +11,7 @@ import { Playlist } from '../Models/playlist.model';
 })
 export class SpotifyService {
   public song$: BehaviorSubject<string> = new BehaviorSubject('');
-  public refresh$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  public refreshPlaylist$: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

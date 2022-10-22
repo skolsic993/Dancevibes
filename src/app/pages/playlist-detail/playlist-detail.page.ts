@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
 import { Track } from 'src/app/Models/track.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -35,7 +35,8 @@ export class PlaylistDetailPage implements OnInit {
       pluck('id'),
       switchMap((id: string) => {
         return this.spotifyService.getSpecificPlaylist(id);
-      })
+      }),
+      shareReplay()
     );
 
     this.getDataForHeroSection();

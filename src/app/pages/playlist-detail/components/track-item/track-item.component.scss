@@ -23,7 +23,7 @@ ion-toolbar {
     left: 10px;
     background: #121429;
     border-radius: 0;
-    font-family: "Libre Franklin", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 12px;
   }
 
@@ -58,6 +58,10 @@ ion-toolbar {
       overflow: hidden;
 
       ion-label {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
         color: #fff;
         font-size: 12px;
         letter-spacing: -0.3px;
@@ -69,6 +73,14 @@ ion-toolbar {
         display: flex;
         flex-direction: row;
         margin-top: 8px;
+        width: 110%;
+
+        .artists {
+          width: 80%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
 
         .lyrics {
           background: #2b99ff;
@@ -114,7 +126,7 @@ ion-title {
   color: #fff;
   font-size: 18px;
   letter-spacing: 1px;
-  font-family: "Libre Franklin", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 img {

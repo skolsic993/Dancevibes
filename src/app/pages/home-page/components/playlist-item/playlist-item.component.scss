@@ -1,6 +1,6 @@
 ion-card {
   margin: 0;
-  background: #121429;
+  background: #240712;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(68, 73, 85, 0.7);
 
   .header-card {
@@ -17,8 +17,9 @@ ion-card {
       padding: 10px;
       text-overflow: ellipsis;
       overflow: hidden;
-      white-space: nowrap;
       text-align: start;
+      line-height: 1.5em;
+      overflow: hidden;
     }
 
     img {

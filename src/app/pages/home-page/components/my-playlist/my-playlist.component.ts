@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
+import { pluck, switchMap } from 'rxjs/operators';
+import { SpotifyService } from 'src/app/services/spotify.service';
 import { Playlist } from '../../../../Models/playlist.model';
 
 @Component({
@@ -16,10 +17,14 @@ export class MyPlaylistComponent implements OnInit {
   @Input() rawPlaylists: Observable<{ items: Playlist[] }>;
   @Input() newReleasedPlaylists: Observable<{ items: Playlist[] }>;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private spotifyService: SpotifyService) {}
 
   ngOnInit() {
-    this.playlists = this.rawPlaylists.pipe(pluck('items'));
+    this.playlists = this.spotifyService.refreshPlaylist$.pipe(
+      switchMap((_) => this.rawPlaylists),
+      pluck('items')
+    );
+
     this.releasedPlaylists = this.newReleasedPlaylists.pipe(
       pluck('albums'),
       pluck('items')
