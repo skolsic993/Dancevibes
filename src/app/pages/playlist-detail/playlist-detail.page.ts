@@ -30,7 +30,6 @@ export class PlaylistDetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.spotifyService.addTrack().subscribe((v) => console.log(v, 'AAAAA'));
     this.playlist = this.activatedRoute.params.pipe(
       pluck('id'),
       switchMap((id: string) => {

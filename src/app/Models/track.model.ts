@@ -12,4 +12,5 @@ export interface Track {
   artists: Artists[];
   uri: string;
   playing: boolean;
+  is_playing: boolean;
 }

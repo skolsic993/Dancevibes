@@ -1,4 +1,4 @@
-import { Album } from './album.model';
+import { Track } from './track.model';
 
 export interface CurrentlySong {
   actions: {
@@ -10,7 +10,7 @@ export interface CurrentlySong {
   context: string | null;
   currently_playing_type: string;
   is_playing: boolean;
-  item: Album;
+  item: Track;
   progress_ms: number;
   timestamp: number;
 }
