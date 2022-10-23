@@ -53,7 +53,7 @@ ion-toolbar {
 
 ion-item {
   --background: #240712;
-  --border-color: #2b99ff;
+  --border-color: #3a0018;
 }
 
 .list-md {
@@ -68,7 +68,12 @@ ion-item {
   font-size: 25px;
   color: #fff;
   font-family: "Varela Round", sans-serif;
-  background: #2b99ff;
+  background: #3a0018;
+}
+
+ion-fab-button {
+  width: 35px;
+  height: 35px;
 }
 
 ion-item-divider {

@@ -10,14 +10,15 @@ import { Track } from './../../../../Models/track.model';
 })
 export class TrackListComponent implements OnInit {
   public topLimit: number = 7;
-  public trackList: any = [];
-  public dataList: any;
+  public trackList: { track: Track }[] = [];
+  public dataList: [{ track: Track }];
+  public currentSong: Track;
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   @Input() tracks: Observable<{
     href: string;
     total: 0;
-    items: { track: Track };
+    items: [{ track: Track }];
   }>;
 
   constructor() {}
@@ -34,6 +35,16 @@ export class TrackListComponent implements OnInit {
       });
 
       this.trackList = this.dataList?.slice(0, this.topLimit);
+    });
+  }
+
+  public getCurrentSong(value: Track) {
+    this.trackList.forEach((element: { track: Track }) => {
+      if (element.track.id !== value?.id) {
+        element.track = { ...element.track, playing: false };
+      } else {
+        element.track = { ...element.track, playing: true };
+      }
     });
   }
 

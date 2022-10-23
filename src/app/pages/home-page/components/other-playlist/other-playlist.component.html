@@ -1,3 +1,9 @@
-<app-home-swiper [playlists]="playlists"></app-home-swiper>
-<app-home-swiper [playlists]="newPlaylists"></app-home-swiper>
-<app-home-swiper [playlists]="categories"></app-home-swiper>
+<app-home-swiper [title]="'Featured'" [playlists]="playlists"></app-home-swiper>
+<app-home-swiper
+  [title]="'New Released '"
+  [playlists]="newPlaylists"
+></app-home-swiper>
+<app-home-swiper
+  [title]="'Categories'"
+  [playlists]="categories"
+></app-home-swiper>

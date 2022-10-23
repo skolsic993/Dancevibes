@@ -11,4 +11,5 @@ export interface Track {
   album: Album;
   artists: Artists[];
   uri: string;
+  playing: boolean;
 }

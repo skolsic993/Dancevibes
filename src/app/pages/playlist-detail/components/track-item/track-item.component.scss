@@ -46,6 +46,14 @@ ion-toolbar {
     flex-direction: row;
     width: 100%;
 
+    .play {
+      color: #1ed760;
+    }
+
+    .pause {
+      color: #fff;
+    }
+
     .track-item {
       display: flex;
       flex-direction: column;
@@ -62,8 +70,7 @@ ion-toolbar {
         overflow: hidden;
         width: 100%;
         white-space: nowrap;
-        color: #fff;
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: -0.3px;
         letter-spacing: 1px;
         font-family: "Varela Round", sans-serif;
@@ -83,7 +90,7 @@ ion-toolbar {
         }
 
         .lyrics {
-          background: #2b99ff;
+          background: #f0005c;
           width: 32px;
           height: 12px;
           border-radius: 2px;

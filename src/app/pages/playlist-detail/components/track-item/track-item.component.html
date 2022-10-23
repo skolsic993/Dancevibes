@@ -1,12 +1,17 @@
 <ion-list>
   <div class="track-container" expand="block">
-    <div class="track-detail" (click)="playSong(trackItem)">
+    <div
+      class="track-detail"
+      (click)="trackItem.playing ? pauseSong(trackItem) : playSong(trackItem)"
+    >
       <img
         [src]="trackItem.album?.images[0]?.url"
         alt="Track background image"
       />
       <div class="track-item">
-        <ion-label>{{ trackItem?.name }}</ion-label>
+        <ion-label [ngClass]="trackItem.playing ? 'play' : 'pause'">{{
+          trackItem?.name
+        }}</ion-label>
         <div class="inline">
           <div class="lyrics">
             <span>lyrics</span>
@@ -27,7 +32,10 @@
     <ion-header>
       <div class="header">
         <ion-toolbar>
-          <ion-buttons slot="end">
+          <ion-buttons
+            slot="end"
+            [ngStyle]="{ position: 'absolute', top: '15px', right: '5%' }"
+          >
             <ion-icon
               (click)="close()"
               name="close-outline"

@@ -102,7 +102,13 @@ export class OwnedPlaylistPage implements OnInit {
       .subscribe((track: Track) => (this.track = track));
   }
 
+  public setNewPlaylist(value: boolean) {
+    this.createNewPlaylist = value;
+  }
+
   public onSubmit(): void {
+    this.createNewPlaylist = true;
+
     if (this.createPlaylistForm.invalid) {
       this.presentActionArtists();
       return;
@@ -112,7 +118,6 @@ export class OwnedPlaylistPage implements OnInit {
       .createPlaylist(this.createPlaylistForm.value, this.id)
       .pipe(
         switchMap((response: Playlist) => {
-          console.log(this.track);
           return this.spotifyService.addItemsToThePlaylist(
             response.id,
             this.track

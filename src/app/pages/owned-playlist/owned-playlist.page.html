@@ -25,9 +25,8 @@
 
 <ng-template #playlists>
   <ion-content>
-    <button (click)="createNewPlaylist = true">Create new</button>
-
     <app-owner-playlist-items
+      (createNewPlaylist)="setNewPlaylist($event)"
       [track]="track"
       [playlists]="ownerPlaylists"
     ></app-owner-playlist-items>

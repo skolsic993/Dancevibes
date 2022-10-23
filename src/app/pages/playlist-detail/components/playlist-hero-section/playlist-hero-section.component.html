@@ -1,6 +1,19 @@
 <app-header [goBack]="true"></app-header>
 
-<div class="hero">
+<div
+  class="hero"
+  [ngStyle]="{
+    background:
+      'linear-gradient(
+      to top,
+      #240712,
+      #300a18,
+      #3e0a1e,
+      #4c0824,
+      #5a0529
+    )'
+  }"
+>
   <div class="image-hero">
     <img [src]="showImage()" alt="Playlist image" />
   </div>

@@ -5,4 +5,7 @@ export interface User {
   followers: { href: null; total: 0 };
   id: string;
   product: string;
+  images: {
+    url: string;
+  };
 }

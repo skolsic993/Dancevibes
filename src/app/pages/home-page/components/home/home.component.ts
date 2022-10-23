@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { User } from './../../../../Models/user';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  public user: Observable<User>;
   public playlists: Observable<{ items: Playlist[] }>;
   public featuredRawPlaylists: Observable<any>;
   public newReleasedPlaylists: Observable<any>;
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {
+    this.user = this.spotifyService.getUser();
     this.playlists = this.spotifyService.getFavoritePlaylists();
     this.featuredRawPlaylists = this.spotifyService.getFeaturedPlaylists();
     this.newReleasedPlaylists = this.spotifyService

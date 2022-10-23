@@ -9,6 +9,7 @@ import { Playlist } from 'src/app/Models/playlist.model';
   styleUrls: ['./home-swiper.component.scss'],
 })
 export class HomeSwiperComponent implements OnInit {
+  @Input() title: string;
   @Input() playlists: Observable<Playlist[]>;
 
   constructor(private router: Router) {}

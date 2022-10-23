@@ -1,5 +1,8 @@
 <ng-container *ngFor="let trackItem of trackList">
-  <app-track-item [trackItem]="trackItem.track"></app-track-item>
+  <app-track-item
+    (currentSong)="getCurrentSong($event)"
+    [trackItem]="trackItem.track"
+  ></app-track-item>
 </ng-container>
 <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
   <ion-infinite-scroll-content loadingSpinner="bubbles">

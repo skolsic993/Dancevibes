@@ -26,7 +26,6 @@ export class SpotifyService {
   });
 
   public playSong(trackItem: Track): Observable<void> {
-    https: console.log(trackItem);
     const headers = this.headers;
     const body = {
       uris: [trackItem?.uri],

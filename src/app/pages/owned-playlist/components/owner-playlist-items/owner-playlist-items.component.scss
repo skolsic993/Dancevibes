@@ -1,0 +1,175 @@
+.header-search {
+  margin-top: 20%;
+  margin-bottom: 20px;
+
+  .center {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  ion-icon {
+    margin-right: 10px;
+    opacity: 0.5;
+  }
+
+  .new-playlist {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 15px;
+    background: #3a0018;
+
+    ion-input {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+      font-size: 18px;
+
+      button {
+        background: #fff;
+      }
+    }
+
+    .ion-color-light {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+      transition: all 0.4s ease;
+    }
+
+    .item-has-focus {
+      color: #fff;
+      font-family: "Varela Round", sans-serif;
+    }
+
+    .new-playlist-action {
+      margin-top: 25px;
+
+      button {
+        padding: 15px 25px;
+        font-family: "Varela Round", sans-serif;
+        letter-spacing: 1px;
+        font-size: 16px;
+        margin-right: 10px;
+        border-radius: 25px;
+
+        &:nth-child(1) {
+          background: #3a0018;
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 1),
+            -1px -1px 1px rgba(68, 73, 85, 0.7);
+        }
+
+        &:nth-child(2) {
+          background: #1ed760;
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 1),
+            -1px -1px 1px rgba(68, 73, 85, 0.7);
+        }
+      }
+    }
+  }
+}
+
+.track-container {
+  display: flex;
+  overflow: hidden;
+  padding: 10px 20px;
+  align-items: center;
+
+  ion-badge {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    background: #121429;
+    border-radius: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+  }
+
+  .number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  img {
+    border-radius: 5px;
+    width: 70px;
+    height: 54px;
+    object-fit: cover;
+  }
+
+  .track-detail {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .track-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 70%;
+      position: relative;
+      padding: 0 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      ion-label {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        letter-spacing: 1px;
+        font-family: "Varela Round", sans-serif;
+      }
+
+      .inline {
+        display: flex;
+        flex-direction: row;
+        margin-top: 8px;
+        width: 110%;
+
+        .owner {
+          font-family: "Varela Round", sans-serif;
+          font-size: 12px;
+          color: #fff;
+          margin: 0 0 0 10px;
+        }
+
+        .lyrics {
+          background: #3a0018;
+          width: 45px;
+          height: 12px;
+          border-radius: 2px;
+          position: relative;
+
+          span {
+            font-size: 12px;
+            font-family: "Varela Round", sans-serif;
+            letter-spacing: 0.5px;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+}
+
+button {
+  padding: 15px 25px;
+  font-family: "Varela Round", sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 25px;
+}
+
+.success {
+  background: #1ed760;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(68, 73, 85, 0.7);
+}

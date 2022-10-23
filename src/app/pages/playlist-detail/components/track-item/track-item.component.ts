@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -10,10 +17,10 @@ import { Artists } from './../../../../Models/artists.model';
   styleUrls: ['./track-item.component.scss'],
 })
 export class TrackItemComponent implements OnInit {
-  public playButton: boolean = true;
   public names: string[];
 
   @Input() trackItem: Track;
+  @Output() currentSong = new EventEmitter<Track>();
 
   constructor(private spotifyService: SpotifyService) {}
 
@@ -53,13 +60,15 @@ export class TrackItemComponent implements OnInit {
   }
 
   public playSong(trackItem: Track) {
-    this.playButton = false;
+    this.currentSong.emit(trackItem);
+
     this.spotifyService.song$.next(trackItem?.uri);
     this.spotifyService.playSong(trackItem).subscribe();
   }
 
   public pauseSong(trackItem: Track) {
-    this.playButton = true;
+    this.trackItem.playing = false;
+
     this.spotifyService.song$.next(trackItem?.uri);
     this.spotifyService.pauseSong(trackItem?.uri).subscribe();
   }
