@@ -130,15 +130,12 @@ export class SpotifyService {
     );
   }
 
-  public getLikedTrack(id: string): any {
+  public getLikedTrack(ids: string[]): Observable<any> {
     const headers = this.headers;
 
-    return this.http.get(
-      `${this.baseUrl}/me/tracks/contains?ids=5Sm1X46tna50RstHZvw072`,
-      {
-        headers,
-      }
-    );
+    return this.http.get(`${this.baseUrl}/me/tracks/contains?ids=${ids}`, {
+      headers,
+    });
   }
 
   public getNewReleasedPlaylists(): Observable<{ items: Playlist[] }> {

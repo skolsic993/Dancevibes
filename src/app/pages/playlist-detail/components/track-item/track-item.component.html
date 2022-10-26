@@ -20,10 +20,17 @@
         </div>
       </div>
     </div>
-    <ion-icon
-      name="ellipsis-vertical-outline"
-      id="open-modal+{{ trackItem?.uid }}"
-    ></ion-icon>
+    <div class="icons">
+      <ion-icon
+        [ngStyle]="{ 'margin-right': '10px' }"
+        *ngIf="trackItem?.liked"
+        name="heart-outline"
+      ></ion-icon>
+      <ion-icon
+        name="ellipsis-vertical-outline"
+        id="open-modal+{{ trackItem?.uid }}"
+      ></ion-icon>
+    </div>
   </div>
 </ion-list>
 

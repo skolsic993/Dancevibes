@@ -16,6 +16,7 @@ export class TrackListComponent implements OnInit {
   public trackList: { track: Track }[] = [];
   public dataList: [{ track: Track }];
   public currentSong: Track;
+  public listOfItems: Track[];
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   @Input() tracks: Observable<{
@@ -57,6 +58,7 @@ export class TrackListComponent implements OnInit {
 
                 this.getCurrentSong(song?.item);
                 this.checkIfSongIsPlaying(song);
+                this.checkLikedSongs();
 
                 return this.trackList;
               }
@@ -82,11 +84,31 @@ export class TrackListComponent implements OnInit {
     });
   }
 
-  loadData(event) {
+  public checkLikedSongs(): void {
+    let ids: string[] = [];
+
+    this.trackList.forEach((element: { track: Track }) => {
+      ids.push(element.track.id);
+    });
+
+    this.spotifyService
+      .getLikedTrack(ids)
+      .subscribe((likedSongs: boolean[]) => {
+        for (let index = 0; index < this.trackList.length; ++index) {
+          this.trackList[index].track = {
+            ...this.trackList[index].track,
+            liked: likedSongs[index],
+          };
+        }
+      });
+  }
+
+  loadData(event: any): void {
     setTimeout(() => {
       this.topLimit += 4;
       this.trackList = this.dataList?.slice(0, this.topLimit);
       event.target.complete();
+      this.checkLikedSongs();
 
       if (this.trackList.length === this.dataList.length) {
         event.target.disabled = true;
@@ -94,7 +116,7 @@ export class TrackListComponent implements OnInit {
     }, 500);
   }
 
-  toggleInfiniteScroll() {
+  toggleInfiniteScroll(): void {
     this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
 }

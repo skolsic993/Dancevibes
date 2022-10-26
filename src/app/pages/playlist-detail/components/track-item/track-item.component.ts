@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';

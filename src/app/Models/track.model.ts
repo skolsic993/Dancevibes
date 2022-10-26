@@ -13,4 +13,5 @@ export interface Track {
   uri: string;
   playing: boolean;
   is_playing: boolean;
+  liked: boolean;
 }
