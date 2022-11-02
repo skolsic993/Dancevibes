@@ -1,0 +1,23 @@
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+
+  button {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 20px;
+    font-family: "Varela Round", sans-serif;
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin-right: 10px;
+    border-radius: 25px;
+    background: transparent;
+
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 1),
+      -1px -1px 1px rgba(68, 73, 85, 0.7);
+  }
+}

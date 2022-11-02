@@ -1,8 +1,14 @@
-<!--<app-header [goBack]="true"></app-header>-->
-<ion-content>
-  <app-playlist-hero-section
-    [data]="heroSectionData"
-  ></app-playlist-hero-section>
+<div class="iphone">
+  <app-status-bar></app-status-bar>
+  <ion-content class="border-mobile">
+    <app-playlist-hero-section
+      [data]="heroSectionData"
+    ></app-playlist-hero-section>
 
-  <app-track-list [tracks]="tracks"></app-track-list>
-</ion-content>
+    <app-track-list
+      [tracks]="tracks"
+      [heroSection]="heroSectionData"
+    ></app-track-list>
+  </ion-content>
+  <app-home-button></app-home-button>
+</div>

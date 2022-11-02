@@ -18,11 +18,20 @@
 
       <div
         class="track-action"
-        [routerLink]="['/owned-playlist']"
+        [routerLink]="
+          description.description !== ''
+            ? ['/owned-playlist']
+            : ['/playlists', id]
+        "
         (click)="close()"
       >
-        <ion-icon name="musical-notes-outline"></ion-icon>
-        <p>Add to the Playlist</p>
+        <ion-icon
+          name="musical-notes-outline"
+          [ngClass]="description.description !== '' ? '' : 'disabled'"
+        ></ion-icon>
+        <p [ngClass]="description.description !== '' ? '' : 'disabled'">
+          Add to the Playlist
+        </p>
       </div>
 
       <div class="track-action" (click)="presentActionAuthor()">

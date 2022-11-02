@@ -1,0 +1,23 @@
+.fixed {
+  position: fixed;
+  max-width: 390px;
+  width: 100%;
+  z-index: 10000;
+  background: #240712;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+
+    .battery {
+      img {
+        margin-right: 5px;
+      }
+    }
+  }
+}

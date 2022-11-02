@@ -90,6 +90,7 @@ ion-toolbar {
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+          letter-spacing: 1px;
         }
 
         .lyrics {
@@ -127,7 +128,7 @@ ion-icon {
   transition: all 0.2s ease;
 }
 
-ion-content {
+:host ion-content {
   --padding-start: 20px;
   --padding-end: 20px;
 }
@@ -142,4 +143,8 @@ ion-title {
 img {
   border-radius: 10px;
   width: 100%;
+}
+
+::ng-deep .ion-page {
+  padding: 40px 0;
 }

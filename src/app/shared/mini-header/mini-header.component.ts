@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./mini-header.component.scss'],
 })
 export class MiniHeaderComponent implements OnInit {
+  @Input() showOptions: boolean;
   @Input() title: string;
 
   constructor() {}

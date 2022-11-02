@@ -76,6 +76,10 @@
   padding: 10px 20px;
   align-items: center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   ion-badge {
     position: absolute;
     top: 0px;

@@ -1,5 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonInfiniteScroll } from '@ionic/angular';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { IonContent, IonInfiniteScroll } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -17,8 +23,20 @@ export class TrackListComponent implements OnInit {
   public dataList: [{ track: Track }];
   public currentSong: Track;
   public listOfItems: Track[];
+  public hasScrollbar: boolean = false;
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonContent, { static: false }) private content: IonContent;
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkForScrollbar();
+  }
+
+  @Input() heroSection: Observable<{
+    name: string;
+    description: string;
+    image: string;
+  }>;
   @Input() tracks: Observable<{
     href: string;
     total: 0;
@@ -105,9 +123,9 @@ export class TrackListComponent implements OnInit {
 
   loadData(event: any): void {
     setTimeout(() => {
-      this.topLimit += 4;
+      this.topLimit += 6;
       this.trackList = this.dataList?.slice(0, this.topLimit);
-      event.target.complete();
+      //event.target.complete();
       this.checkLikedSongs();
 
       if (this.trackList.length === this.dataList.length) {
@@ -118,5 +136,10 @@ export class TrackListComponent implements OnInit {
 
   toggleInfiniteScroll(): void {
     this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+  }
+
+  async checkForScrollbar(): Promise<void> {
+    const scrollElement = await this.content.getScrollElement();
+    this.hasScrollbar = scrollElement.scrollHeight > scrollElement.clientHeight;
   }
 }

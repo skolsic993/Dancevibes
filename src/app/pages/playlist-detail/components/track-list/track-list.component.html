@@ -2,8 +2,21 @@
   <app-track-item
     (currentSong)="getCurrentSong($event)"
     [trackItem]="trackItem.track"
+    [showAddPlaylistButton]="heroSection | async"
   ></app-track-item>
 </ng-container>
+
+<div class="centered">
+  <button
+    ion-button
+    [style.visibility]="hasScrollbar ? 'hidden' : 'visible'"
+    (click)="loadData($event)"
+  >
+    <ion-icon name="chevron-down-circle-outline" size="medium"></ion-icon>
+    Load more
+  </button>
+</div>
+
 <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
   <ion-infinite-scroll-content loadingSpinner="bubbles">
   </ion-infinite-scroll-content>

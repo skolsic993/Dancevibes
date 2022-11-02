@@ -23,6 +23,7 @@
     <div class="icons">
       <ion-icon
         [ngStyle]="{ 'margin-right': '10px' }"
+        [ngClass]="trackItem.liked ? 'liked' : 'not-liked'"
         *ngIf="trackItem?.liked"
         name="heart-outline"
       ></ion-icon>
@@ -49,13 +50,13 @@
               size="large"
             ></ion-icon>
           </ion-buttons>
-          <ion-title></ion-title>
         </ion-toolbar>
       </div>
     </ion-header>
     <app-track-detail
       [trackItem]="trackItem"
-      [ngStyle]="{ height: '100%' }"
+      [ngStyle]="{ height: '100%', width: '100%' }"
+      [description]="showAddPlaylistButton"
     ></app-track-detail>
   </ng-template>
 </ion-modal>

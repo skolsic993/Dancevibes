@@ -2,29 +2,33 @@
   *ngIf="(ownerPlaylists?.length <= 0) || (ownerPlaylists?.length > 0 && createNewPlaylist); then noPlaylist else playlists"
 ></div>
 <ng-template #noPlaylist>
-  <ion-content>
-    <form (ngSubmit)="onSubmit()" [formGroup]="createPlaylistForm">
-      <div class="new-playlist">
-        <ion-item>
-          <ion-label position="floating" color="light">Playlist Name</ion-label>
-          <ion-input
-            clearInput
-            [formControl]="$any(createPlaylistForm).controls['name']"
-          ></ion-input>
-        </ion-item>
-        <div class="new-playlist-action">
-          <button type="button" class="cancel" (click)="redirectToHome()">
-            Cancel
-          </button>
-          <button type="submit" class="success">Create</button>
+  <ion-content class="iphone">
+    <div [ngStyle]="{'height': '845px'}">
+      <form (ngSubmit)="onSubmit()" [formGroup]="createPlaylistForm">
+        <div class="new-playlist">
+          <ion-item>
+            <ion-label position="floating" color="light"
+              >Playlist Name</ion-label
+            >
+            <ion-input
+              clearInput
+              [formControl]="$any(createPlaylistForm).controls['name']"
+            ></ion-input>
+          </ion-item>
+          <div class="new-playlist-action">
+            <button type="button" class="cancel" (click)="redirectToHome()">
+              Cancel
+            </button>
+            <button type="submit" class="success">Create</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </ion-content>
 </ng-template>
 
 <ng-template #playlists>
-  <ion-content>
+  <ion-content class="iphone">
     <app-owner-playlist-items
       (createNewPlaylist)="setNewPlaylist($event)"
       [track]="track"

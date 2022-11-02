@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';
@@ -20,6 +20,11 @@ export class TrackItemComponent implements OnInit {
   public names: string[];
 
   @Input() trackItem: Track;
+  @Input() showAddPlaylistButton: {
+    name: string;
+    description: string;
+    image: string;
+  };
   @Output() currentSong = new EventEmitter<Track>();
 
   constructor(private spotifyService: SpotifyService) {}

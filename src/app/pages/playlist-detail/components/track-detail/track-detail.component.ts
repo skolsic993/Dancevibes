@@ -14,6 +14,11 @@ export class TrackDetailComponent implements OnInit {
   public result: string;
   public names: string[];
   @Input() trackItem: Track;
+  @Input() description: {
+    name: string;
+    description: string;
+    image: string;
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,

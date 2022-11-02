@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding-top: 25px;
+  padding-top: 65px;
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -13,10 +13,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
-    .icon-size {
-      height: 28px;
-    }
 
     img {
       height: 215px;
@@ -35,14 +31,22 @@
     justify-content: space-between;
     align-items: center;
 
+    .hero-text {
+      width: 100%;
+    }
+
     .playButton {
       height: 50px;
       width: 50px;
     }
 
     p {
+      width: 95%;
       font-family: "Varela Round", sans-serif;
       font-size: 11px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
       &:nth-child(1) {
         text-decoration: underline;
