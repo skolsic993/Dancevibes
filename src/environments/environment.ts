@@ -11,6 +11,7 @@ export const environment = {
     'streaming',
     'user-read-private',
     'user-library-read',
+    'user-library-modify',
     'user-top-read',
     'user-read-playback-state',
     'user-read-currently-playing',

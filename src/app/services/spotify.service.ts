@@ -138,6 +138,25 @@ export class SpotifyService {
     });
   }
 
+  public likeSong(ids: string[]): Observable<void> {
+    const headers = this.headers;
+    const body = {
+      ids,
+    };
+
+    return this.http.put<void>(`${this.baseUrl}/me/tracks`, body, {
+      headers,
+    });
+  }
+
+  public dislikeSong(ids: string[]): Observable<any> {
+    const headers = this.headers;
+
+    return this.http.delete<void>(`${this.baseUrl}/me/tracks?ids=${ids}`, {
+      headers,
+    });
+  }
+
   public getNewReleasedPlaylists(): Observable<{ items: Playlist[] }> {
     const headers = this.headers;
 

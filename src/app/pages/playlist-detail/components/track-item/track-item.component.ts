@@ -6,6 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { Track } from 'src/app/Models/track.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -27,7 +28,7 @@ export class TrackItemComponent implements OnInit {
   };
   @Output() currentSong = new EventEmitter<Track>();
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(private spotifyService: SpotifyService, private router: Router) {}
 
   ngOnInit() {
     this.getTrackArtists();

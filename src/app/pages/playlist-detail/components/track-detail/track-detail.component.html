@@ -6,9 +6,17 @@
 
   <ion-row>
     <ion-col size="12">
-      <div class="track-action">
-        <ion-icon name="heart-outline"></ion-icon>
-        <p>Like</p>
+      <div
+        class="track-action"
+        (click)="trackItem.liked ? dislikeSong() : likeSong()"
+      >
+        <ion-icon
+          name="heart-outline"
+          [ngClass]="alreadyLiked ? 'liked' : ''"
+        ></ion-icon>
+        <p [ngClass]="alreadyLiked ? 'liked' : ''">
+          {{ alreadyLiked ? "Liked" : "Like" }}
+        </p>
       </div>
 
       <div class="track-action">

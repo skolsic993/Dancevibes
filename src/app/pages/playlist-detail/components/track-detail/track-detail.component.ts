@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { switchMap } from 'rxjs/operators';
 import { Track } from 'src/app/Models/track.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
@@ -10,6 +11,8 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styleUrls: ['./track-detail.component.scss'],
 })
 export class TrackDetailComponent implements OnInit {
+  public alreadyLiked: boolean;
+  public selectedSong: any;
   public id: string;
   public result: string;
   public names: string[];
@@ -32,13 +35,19 @@ export class TrackDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (param: { id: string }) => (this.id = param.id)
     );
+
+    this.spotifyService.song$.subscribe((song) => (this.selectedSong = song));
+
+    this.spotifyService
+      .getLikedTrack([`${this.selectedSong}`])
+      .subscribe((liked: boolean[]) => (this.alreadyLiked = liked[0]));
   }
 
   public getArtists(): string[] {
     return (this.names = this.trackItem.artists.map(({ name }) => ' ' + name));
   }
 
-  async presentActionAuthor() {
+  async presentActionAuthor(): Promise<void> {
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Album',
       subHeader: this.trackItem?.album?.name,
@@ -58,7 +67,35 @@ export class TrackDetailComponent implements OnInit {
     await actionSheet.present();
   }
 
-  public close() {
+  public likeSong(): void {
+    this.spotifyService
+      .likeSong([`${this.selectedSong}`])
+      .pipe(
+        switchMap(() => {
+          return this.spotifyService.getLikedTrack([`${this.trackItem.id}`]);
+        })
+      )
+      .subscribe((liked: boolean[]) => {
+        this.alreadyLiked = liked[0];
+        this.trackItem.liked = liked[0];
+      });
+  }
+
+  public dislikeSong() {
+    this.spotifyService
+      .dislikeSong([`${this.trackItem.id}`])
+      .pipe(
+        switchMap(() => {
+          return this.spotifyService.getLikedTrack([`${this.trackItem.id}`]);
+        })
+      )
+      .subscribe((liked: boolean[]) => {
+        this.alreadyLiked = liked[0];
+        this.trackItem.liked = liked[0];
+      });
+  }
+
+  public close(): void {
     const modals = document.getElementsByTagName('ion-modal');
     [].forEach.call(modals, function (el: any) {
       el.parentNode.removeChild(el);
