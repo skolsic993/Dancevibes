@@ -3,6 +3,8 @@
   <ion-content class="border-mobile">
     <app-playlist-hero-section
       [data]="heroSectionData"
+      [alreadyLiked]="alreadyLiked"
+      (unfollowPlaylist)="likePlaylist($event)"
     ></app-playlist-hero-section>
 
     <app-track-list

@@ -140,6 +140,7 @@ export class TrackListComponent implements OnInit {
 
   async checkForScrollbar(): Promise<void> {
     const scrollElement = await this.content?.getScrollElement();
-    this.hasScrollbar = scrollElement.scrollHeight > scrollElement.clientHeight;
+    this.hasScrollbar =
+      scrollElement?.scrollHeight > scrollElement?.clientHeight;
   }
 }

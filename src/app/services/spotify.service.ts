@@ -12,6 +12,7 @@ import { Playlist } from '../Models/playlist.model';
 export class SpotifyService {
   public song$: BehaviorSubject<string> = new BehaviorSubject('');
   public refreshPlaylist$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  public likedPlaylists$: BehaviorSubject<Playlist[]> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -106,6 +107,40 @@ export class SpotifyService {
     return this.http.get<any>(`${this.baseUrl}/me`, {
       headers,
     });
+  }
+
+  public unfollowPlaylist(id: string): Observable<void> {
+    const headers = this.headers;
+
+    return this.http.delete<void>(`${this.baseUrl}/playlists/${id}/followers`, {
+      headers,
+    });
+  }
+
+  public followPlaylist(id: string): Observable<void> {
+    const headers = this.headers;
+    const body = {
+      public: true,
+    };
+
+    return this.http.put<void>(
+      `${this.baseUrl}/playlists/${id}/followers`,
+      body,
+      {
+        headers,
+      }
+    );
+  }
+
+  public checkFollowedPlaylist(id: string): Observable<void> {
+    const headers = this.headers;
+
+    return this.http.get<void>(
+      `${this.baseUrl}/playlists/${id}/followers/contains`,
+      {
+        headers,
+      }
+    );
   }
 
   public createPlaylist(

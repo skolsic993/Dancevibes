@@ -20,4 +20,5 @@ export interface Playlist {
   tracks: { href: string; total: 0; items: [{ track: Track }] };
   type: string;
   uri: string;
+  liked: boolean;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   public newReleasedPlaylists: Observable<any>;
   public rawCategories: Observable<any>;
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(private spotifyService: SpotifyService, private router: Router) {}
 
   ngOnInit() {
     this.user = this.spotifyService.getUser();

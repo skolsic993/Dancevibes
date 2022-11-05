@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Track } from 'src/app/Models/track.model';
 import { AuthService } from './../../../../services/auth.service';
@@ -17,11 +17,13 @@ export class PlaylistHeroSectionComponent implements OnInit {
 
   public tracks: Track;
 
+  @Input() alreadyLiked: boolean;
   @Input() data: Observable<{
     name: string;
     description: string;
     image: string;
   }>;
+  @Output() unfollowPlaylist = new EventEmitter();
 
   constructor(private authService: AuthService) {}
 
@@ -35,6 +37,10 @@ export class PlaylistHeroSectionComponent implements OnInit {
 
   public getUsername(): string {
     return this.authService.getUser()?.user_metadata?.full_name;
+  }
+
+  public likePlaylist() {
+    this.unfollowPlaylist.emit(this.alreadyLiked);
   }
 
   public showImage(): string {
