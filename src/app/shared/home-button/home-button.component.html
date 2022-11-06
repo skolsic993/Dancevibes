@@ -1,4 +1,17 @@
 <div class="footer">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule" (click)="redirectToHome()">
+        <ion-icon name="home-outline" size="large"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="schedule" (click)="redirectToSearch()">
+        <ion-icon name="search-outline" size="large"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="schedule" (click)="redirectToLibrary()">
+        <ion-icon name="library-outline" size="large"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
   <div class="info-header">
     <img src="./assets/images/home-indicator.png" alt="" />
   </div>

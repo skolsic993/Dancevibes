@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
@@ -14,11 +13,11 @@ import { User } from './../../../../Models/user';
 export class HomeComponent implements OnInit {
   public user: Observable<User>;
   public playlists: Observable<{ items: Playlist[] }>;
-  public featuredRawPlaylists: Observable<any>;
-  public newReleasedPlaylists: Observable<any>;
-  public rawCategories: Observable<any>;
+  public featuredRawPlaylists: Observable<{ items: Playlist[] }>;
+  public newReleasedPlaylists: Observable<{ items: Playlist[] }>;
+  public rawCategories: Observable<{ items: Playlist[] }>;
 
-  constructor(private spotifyService: SpotifyService, private router: Router) {}
+  constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit() {
     this.user = this.spotifyService.getUser();

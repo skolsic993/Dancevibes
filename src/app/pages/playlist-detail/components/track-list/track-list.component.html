@@ -17,7 +17,14 @@
   </button>
 </div>
 
-<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-  <ion-infinite-scroll-content loadingSpinner="bubbles">
-  </ion-infinite-scroll-content>
-</ion-infinite-scroll>
+<div
+  [ngStyle]="{
+    'margin-top': '20px',
+    position: 'relative'
+  }"
+>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>

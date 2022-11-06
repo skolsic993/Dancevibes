@@ -17,9 +17,7 @@ export class MyPlaylistComponent implements OnInit {
   @Input() rawPlaylists: Observable<{ items: Playlist[] }>;
   @Input() newReleasedPlaylists: Observable<{ items: Playlist[] }>;
 
-  constructor(private router: Router, private spotifyService: SpotifyService) {
-    this.spotifyService.refreshPlaylist$.next(false);
-  }
+  constructor(private router: Router, private spotifyService: SpotifyService) {}
 
   ngOnInit() {
     this.playlists = this.spotifyService.refreshPlaylist$.pipe(

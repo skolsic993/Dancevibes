@@ -72,6 +72,23 @@ ion-item {
   --border-color: #3a0018;
 }
 
+ion-tabs {
+  top: -70px !important;
+  height: 70px !important;
+}
+
+ion-tab-bar {
+  --ion-tab-bar-background: #240712;
+}
+
+ion-tab-button {
+  font-size: 10px;
+  --background-focused: #fff;
+  --color-selected: #fff;
+  color: #fff;
+  font-size: 1.2em;
+}
+
 ion-icon {
   height: 28px;
   width: 26px;

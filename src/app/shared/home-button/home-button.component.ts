@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home-button',
@@ -6,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-button.component.scss'],
 })
 export class HomeButtonComponent implements OnInit {
+  public song$: BehaviorSubject<string>;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
+  public redirectToHome(): void {
+    this.router.navigateByUrl('/home');
+  }
+
+  public redirectToSearch(): void {
+    this.router.navigateByUrl('/home');
+  }
+
+  public redirectToLibrary(): void {
+    this.router.navigateByUrl('/home');
+  }
 }
