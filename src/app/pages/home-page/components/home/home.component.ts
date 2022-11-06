@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { finalize, shareReplay } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { User } from './../../../../Models/user';
+import { LoadingService } from './../../../../services/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +18,19 @@ export class HomeComponent implements OnInit {
   public newReleasedPlaylists: Observable<{ items: Playlist[] }>;
   public rawCategories: Observable<{ items: Playlist[] }>;
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(
+    private spotifyService: SpotifyService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
+    this.loadingService.loadingOn();
+
     this.user = this.spotifyService.getUser();
-    this.playlists = this.spotifyService.getFavoritePlaylists();
+    this.playlists = this.spotifyService
+      .getFavoritePlaylists()
+      .pipe(finalize(() => this.loadingService.loadingOff()));
+
     this.featuredRawPlaylists = this.spotifyService.getFeaturedPlaylists();
     this.newReleasedPlaylists = this.spotifyService
       .getNewReleasedPlaylists()

@@ -1,8 +1,11 @@
 <div class="header" [ngClass]="showOptions ? 'margin-top' : ''">
   <p>{{ title }}</p>
   <div *ngIf="showOptions">
-    <ion-icon class="icon-size" name="heart-outline" size="large"></ion-icon>
-    <ion-icon class="icon-size" name="heart-outline" size="large"></ion-icon>
-    <ion-icon class="icon-size" name="settings-outline" size="large"></ion-icon>
+    <ion-icon
+      (click)="logout()"
+      class="icon-size"
+      name="log-out-outline"
+      size="large"
+    ></ion-icon>
   </div>
 </div>

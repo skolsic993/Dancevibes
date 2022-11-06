@@ -11,6 +11,10 @@
   );
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(68, 73, 85, 0.7);
 
+  &:hover {
+    cursor: pointer;
+  }
+
   ion-icon {
     height: 28px;
   }

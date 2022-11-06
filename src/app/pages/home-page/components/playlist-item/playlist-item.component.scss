@@ -3,6 +3,10 @@ ion-card {
   background: #240712;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(68, 73, 85, 0.7);
 
+  &:hover {
+    cursor: pointer;
+  }
+
   .header-card {
     width: 100%;
     display: flex;

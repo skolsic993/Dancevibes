@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { IntroPageRoutingModule } from '../pages/home-page/intro-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeButtonComponent } from './home-button/home-button.component';
+import { LoadingComponent } from './loading/loading.component';
 import { MiniHeaderComponent } from './mini-header/mini-header.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 
@@ -14,6 +15,7 @@ import { StatusBarComponent } from './status-bar/status-bar.component';
     MiniHeaderComponent,
     StatusBarComponent,
     HomeButtonComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { StatusBarComponent } from './status-bar/status-bar.component';
     MiniHeaderComponent,
     StatusBarComponent,
     HomeButtonComponent,
+    LoadingComponent,
   ],
 })
 export class SharedModule {}
