@@ -27,9 +27,10 @@ export class HomeComponent implements OnInit {
     this.loadingService.loadingOn();
 
     this.user = this.spotifyService.getUser();
-    this.playlists = this.spotifyService
-      .getFavoritePlaylists()
-      .pipe(finalize(() => this.loadingService.loadingOff()));
+    this.playlists = this.spotifyService.getFavoritePlaylists().pipe(
+      finalize(() => this.loadingService.loadingOff()),
+      shareReplay()
+    );
 
     this.featuredRawPlaylists = this.spotifyService.getFeaturedPlaylists();
     this.newReleasedPlaylists = this.spotifyService

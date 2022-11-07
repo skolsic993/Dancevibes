@@ -33,6 +33,7 @@
       class="icon-size"
       name="heart-outline"
       size="large"
+      *ngIf="alreadyLiked && heroSectionData?.description"
       [ngClass]="alreadyLiked ? 'liked' : ''"
       (click)="likePlaylist()"
     ></ion-icon>

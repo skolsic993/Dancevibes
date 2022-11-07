@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./home-button.component.scss'],
 })
 export class HomeButtonComponent implements OnInit {
+  public token = localStorage.getItem('supabase.auth.token');
   public song$: BehaviorSubject<string>;
 
   constructor(private router: Router) {}
