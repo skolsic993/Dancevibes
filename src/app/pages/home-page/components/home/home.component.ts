@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { finalize, shareReplay } from 'rxjs/operators';
+import { finalize, share, shareReplay } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { User } from './../../../../Models/user';
@@ -29,13 +29,13 @@ export class HomeComponent implements OnInit {
     this.user = this.spotifyService.getUser();
     this.playlists = this.spotifyService.getFavoritePlaylists().pipe(
       finalize(() => this.loadingService.loadingOff()),
-      shareReplay()
+      share()
     );
 
     this.featuredRawPlaylists = this.spotifyService.getFeaturedPlaylists();
     this.newReleasedPlaylists = this.spotifyService
       .getNewReleasedPlaylists()
-      .pipe(shareReplay(1));
+      .pipe(shareReplay());
     this.rawCategories = this.spotifyService.getCategories();
   }
 }

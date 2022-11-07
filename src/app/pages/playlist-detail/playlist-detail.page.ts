@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
   delay,
   first,
@@ -12,6 +12,7 @@ import {
 } from 'rxjs/operators';
 import { Playlist } from 'src/app/Models/playlist.model';
 import { Track } from 'src/app/Models/track.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -35,9 +36,12 @@ export class PlaylistDetailPage implements OnInit {
     image: string;
   }>;
 
+  public signedIn$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private spotifyService: SpotifyService
+    private spotifyService: SpotifyService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -49,6 +53,12 @@ export class PlaylistDetailPage implements OnInit {
       }),
       shareReplay()
     );
+
+    this.authService.authChanges((signed) => {
+      signed == 'SIGNED_IN'
+        ? this.signedIn$.next(true)
+        : this.signedIn$.next(false);
+    });
 
     this.getFollowedPlaylists();
     this.getUnfollowedPlaylists();

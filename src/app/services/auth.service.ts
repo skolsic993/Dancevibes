@@ -16,7 +16,6 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   private supabase: SupabaseClient;
-  public isLoggedin: boolean;
 
   public _currentUser: BehaviorSubject<User | boolean> = new BehaviorSubject(
     null
