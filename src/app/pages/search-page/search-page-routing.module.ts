@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OwnedPlaylistPage } from './owned-playlist.page';
+import { SearchPageComponent } from './search-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: OwnedPlaylistPage,
+    component: SearchPageComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class OwnedPlaylistPageRoutingModule {}
+export class SearchPageRoutingModule {}

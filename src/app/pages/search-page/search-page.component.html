@@ -1,0 +1,22 @@
+<app-header [goBack]="true"></app-header>
+
+<ion-content class="border-mobile" [ngStyle]="{ height: '845px' }">
+  <div class="header-search">
+    <div class="center">
+      <button class="success" (click)="setCreatePlaylist()">Create new</button>
+    </div>
+
+    <form [formGroup]="searchPlaylistForm">
+      <div class="new-playlist">
+        <ion-item [ngStyle]="{ 'border-radius': '30px' }">
+          <ion-icon name="search-outline"></ion-icon>
+          <ion-input
+            placeholder="Search"
+            clearInput
+            [formControl]="$any(searchPlaylistForm).controls['name']"
+          ></ion-input>
+        </ion-item>
+      </div>
+    </form>
+  </div>
+</ion-content>

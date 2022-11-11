@@ -18,7 +18,6 @@ export class OwnerPlaylistItemsComponent implements OnInit {
   public id: string;
   public ownerPlaylists: Playlist[];
   public user: User;
-  //public createNewPlaylist: boolean = false;
 
   public searchPlaylistForm: FormGroup = new FormGroup({
     name: new FormControl('', [

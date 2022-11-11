@@ -90,6 +90,14 @@ export class SpotifyService {
     );
   }
 
+  public searchSongs() {
+    const headers = this.headers;
+
+    return this.http.get<{ items: Playlist[] }>(`${this.baseUrl}/search`, {
+      headers,
+    });
+  }
+
   public getFeaturedPlaylists(): Observable<{ items: Playlist[] }> {
     const headers = this.headers;
 

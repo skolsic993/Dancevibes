@@ -4,13 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
     pathMatch: 'full',
+    redirectTo: '/home',
   },
   {
     path: '',
     loadChildren: () =>
       import('./pages/home-page/intro.module').then((m) => m.IntroPageModule),
+  },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./pages/search-page/search-page.module').then(
+        (m) => m.SearchPageModule
+      ),
   },
   {
     path: 'playlists/:id',
@@ -28,6 +35,7 @@ const routes: Routes = [
   },
   {
     path: '**',
+    pathMatch: 'full',
     redirectTo: '/home',
   },
 ];
