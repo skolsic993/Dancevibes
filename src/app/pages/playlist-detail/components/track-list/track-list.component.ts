@@ -3,7 +3,7 @@ import {
   HostListener,
   Input,
   OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { IonContent, IonInfiniteScroll } from '@ionic/angular';
 import { Observable } from 'rxjs';
